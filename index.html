@@ -6,10 +6,10 @@
     <title>Приглашение на свадьбу — Лариса & Александр</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Pangolin & Comfortaa -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Pangolin&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -27,8 +27,8 @@
                         }
                     },
                     fontFamily: {
-                        sans: ['Montserrat', 'sans-serif'],
-                        hand: ['Caveat', 'cursive']
+                        sans: ['Comfortaa', 'sans-serif'],
+                        hand: ['Pangolin', 'cursive']
                     }
                 }
             }
@@ -44,6 +44,7 @@
             background-position: 0 0, 15px 15px;
             color: #2D2926;
             overflow-x: hidden;
+            font-family: 'Comfortaa', sans-serif;
         }
 
         /* Стиль поляроидных карточек */
@@ -87,18 +88,18 @@
         <header class="text-center pt-4 relative">
             <!-- Гирлянда флажков "У НАС СВАДЬБА" -->
             <div class="flex justify-center items-center gap-1 mb-8 flex-wrap">
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform -rotate-3">У</span>
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform rotate-2">Н</span>
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform -rotate-2">А</span>
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform rotate-3 mr-2">С</span>
+                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform -rotate-3 font-hand">У</span>
+                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform rotate-2 font-hand">Н</span>
+                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform -rotate-2 font-hand">А</span>
+                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform rotate-3 mr-2 font-hand">С</span>
                 
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform -rotate-2">С</span>
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform rotate-1">В</span>
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform -rotate-3">А</span>
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform rotate-2">Д</span>
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform -rotate-1">Ь</span>
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform rotate-3">Б</span>
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform -rotate-2">А</span>
+                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform -rotate-2 font-hand">С</span>
+                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform rotate-1 font-hand">В</span>
+                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform -rotate-3 font-hand">А</span>
+                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform rotate-2 font-hand">Д</span>
+                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform -rotate-1 font-hand">Ь</span>
+                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform rotate-3 font-hand">Б</span>
+                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform -rotate-2 font-hand">А</span>
             </div>
 
             <!-- Галерея Polaroid с детскими фото -->
@@ -106,11 +107,11 @@
                 <!-- Фото Александра (Слева) -->
                 <div class="polaroid w-44 absolute left-2 top-0 rotate-[-6deg] z-10 rounded-sm">
                     <img src="https://images.unsplash.com/photo-1543332164-6e82f355badc?auto=format&fit=crop&q=80&w=400" alt="Александр в детстве" class="w-full h-40 object-cover rounded-xs filter contrast-[1.05]">
-                    <div class="font-hand text-2xl text-center mt-2 text-wedding-dark">Александр</div>
+                    <div class="font-hand text-xl text-center mt-2 text-wedding-dark">Александр</div>
                 </div>
 
                 <!-- Стрелочка и подпись рукописная -->
-                <div class="absolute top-[-25px] left-[15%] z-20 text-wedding-primary font-hand text-xl">
+                <div class="absolute top-[-25px] left-[15%] z-20 text-wedding-primary font-hand text-lg">
                     <span>Александр</span>
                     <svg class="w-8 h-8 inline-block transform rotate-45 -mt-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </div>
@@ -118,11 +119,11 @@
                 <!-- Фото Ларисы (Справа) -->
                 <div class="polaroid w-44 absolute right-2 top-6 rotate-[7deg] z-0 rounded-sm">
                     <img src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&q=80&w=400" alt="Лариса в детстве" class="w-full h-40 object-cover rounded-xs filter contrast-[1.05]">
-                    <div class="font-hand text-2xl text-center mt-2 text-wedding-dark">Лариса</div>
+                    <div class="font-hand text-xl text-center mt-2 text-wedding-dark">Лариса</div>
                 </div>
 
                 <!-- Стрелочка и подпись к Ларисе -->
-                <div class="absolute bottom-[-20px] right-[20%] z-20 text-wedding-primary font-hand text-xl">
+                <div class="absolute bottom-[-20px] right-[20%] z-20 text-wedding-primary font-hand text-lg">
                     <svg class="w-8 h-8 inline-block transform rotate-[130deg] -mt-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     <span>Лариса</span>
                 </div>
@@ -130,16 +131,16 @@
 
             <!-- Имена пары -->
             <div class="mt-16 mb-6">
-                <h1 class="font-hand text-4xl text-wedding-primary font-bold tracking-wide">
-                    ЛАРИСА <span class="text-3xl mx-1">+</span> АЛЕКСАНДР
+                <h1 class="font-hand text-3xl text-wedding-primary tracking-wide">
+                    ЛАРИСА <span class="text-2xl mx-1">+</span> АЛЕКСАНДР
                 </h1>
-                <div class="text-wedding-primary text-3xl font-hand mt-1">♡</div>
+                <div class="text-wedding-primary text-2xl font-hand mt-1">♡</div>
             </div>
         </header>
 
         <!-- ================= 2. УЗНАЛИ ЭТИХ МАЛЫШЕЙ? ================= -->
         <section class="my-10 text-center">
-            <h2 class="text-2xl font-bold tracking-tight text-wedding-dark mb-4">Узнали этих малышей?</h2>
+            <h2 class="font-hand text-2xl tracking-tight text-wedding-primary mb-4">Узнали этих малышей?</h2>
             <p class="text-wedding-muted text-sm leading-relaxed px-4 mb-6">
                 Время пролетело незаметно. И вот наступил момент, когда наши детские мечты стали реальностью. Разделите с нами это главное событие лета — подарите нам своё внимание и поддержку!
             </p>
@@ -148,7 +149,7 @@
             <div class="relative flex justify-center my-6">
                 <div class="polaroid w-64 rotate-[-2deg] rounded-sm">
                     <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=600" alt="Лариса и Александр" class="w-full h-64 object-cover rounded-xs">
-                    <div class="font-hand text-xl text-center mt-3 text-wedding-muted">Это мы ♡</div>
+                    <div class="font-hand text-lg text-center mt-3 text-wedding-muted">Это мы ♡</div>
                 </div>
             </div>
         </section>
@@ -156,8 +157,8 @@
         <!-- ================= 3. ОБРАЩЕНИЕ ================= -->
         <section class="my-10 text-center px-2">
             <div class="inline-block text-wedding-primary text-lg font-hand mb-1">♡ ♡ ♡</div>
-            <h2 class="font-hand text-3xl text-wedding-primary font-bold uppercase tracking-wider mb-3">
-                Дорогие наши<br>друзья и родные!
+            <h2 class="font-hand text-2xl text-wedding-primary uppercase tracking-wider mb-3">
+                ДОРОГИЕ НАШИ<br>ДРУЗЬЯ И РОДНЫЕ!
             </h2>
             <p class="text-wedding-muted text-sm leading-relaxed">
                 Это официальное приглашение на нашу свадьбу! А получили вы его потому, что мы очень хотим видеть вас в этот день рядом с нами!
@@ -168,7 +169,7 @@
         <section class="my-12 text-center bg-white/50 backdrop-blur-xs p-6 rounded-2xl border border-stone-200/60 shadow-xs">
             <div class="flex justify-between items-center text-wedding-primary font-semibold tracking-widest uppercase mb-4 px-4 text-sm">
                 <span>АВГУСТ</span>
-                <span class="text-3xl font-hand font-bold text-wedding-primary">09</span>
+                <span class="text-3xl font-hand text-wedding-primary">09</span>
                 <span>2027</span>
             </div>
 
@@ -223,7 +224,7 @@
 
         <!-- ================= 5. МЕСТО ПРОВЕДЕНИЯ ================= -->
         <section class="my-12 text-center">
-            <h2 class="font-hand text-3xl text-wedding-primary font-bold uppercase tracking-widest mb-1">МЕСТО</h2>
+            <h2 class="font-hand text-2xl text-wedding-primary uppercase tracking-widest mb-1">МЕСТО</h2>
             <p class="text-xs text-wedding-muted uppercase tracking-wider mb-4">г. Воронеж, ул. Изыскателей, Bazza36</p>
 
             <div class="relative flex justify-center my-4">
@@ -240,15 +241,14 @@
         <!-- ================= 6. ТАЙМИНГ ДНЯ ================= -->
         <section class="my-12">
             <div class="text-center mb-8">
-                <h2 class="font-hand text-3xl text-wedding-primary font-bold uppercase tracking-widest">ТАЙМИНГ</h2>
-                <div class="font-hand text-lg text-wedding-muted">Самого важного дня ⤵</div>
+                <h2 class="font-hand text-2xl text-wedding-primary uppercase tracking-widest">ТАЙМИНГ</h2>
+                <div class="font-hand text-base text-wedding-muted">Самого важного дня ⤵</div>
             </div>
 
             <div class="space-y-6 px-4 relative before:absolute before:left-[2.2rem] before:top-2 before:bottom-2 before:w-[1px] before:bg-stone-300">
                 <!-- Событие 1 -->
                 <div class="flex items-center gap-4 relative z-10">
                     <div class="w-10 h-10 rounded-full bg-white border border-stone-200 flex items-center justify-center text-wedding-primary shadow-xs shrink-0">
-                        <!-- Иконка сбора -->
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                     </div>
                     <div>
@@ -261,7 +261,6 @@
                 <!-- Событие 2 -->
                 <div class="flex items-center gap-4 relative z-10">
                     <div class="w-10 h-10 rounded-full bg-white border border-stone-200 flex items-center justify-center text-wedding-primary shadow-xs shrink-0">
-                        <!-- Иконка колец / церемонии -->
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
                     </div>
                     <div>
@@ -274,7 +273,6 @@
                 <!-- Событие 3 -->
                 <div class="flex items-center gap-4 relative z-10">
                     <div class="w-10 h-10 rounded-full bg-white border border-stone-200 flex items-center justify-center text-wedding-primary shadow-xs shrink-0">
-                        <!-- Иконка торта / банкета -->
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.7 2.7 0 01-3 0 2.7 2.7 0 00-3 0 2.7 2.7 0 01-3 0 2.7 2.7 0 00-3 0 2.7 2.7 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M3 21h18M3 10h18v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7z"></path></svg>
                     </div>
                     <div>
@@ -287,7 +285,6 @@
                 <!-- Событие 4 -->
                 <div class="flex items-center gap-4 relative z-10">
                     <div class="w-10 h-10 rounded-full bg-white border border-stone-200 flex items-center justify-center text-wedding-primary shadow-xs shrink-0">
-                        <!-- Иконка бокалов -->
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                     </div>
                     <div>
@@ -302,7 +299,7 @@
         <!-- ================= 7. ДРЕСС-КОД ================= -->
         <section class="my-12">
             <div class="text-center mb-6">
-                <h2 class="font-hand text-3xl text-wedding-primary font-bold uppercase tracking-widest mb-3">ДРЕСС-КОД</h2>
+                <h2 class="font-hand text-2xl text-wedding-primary uppercase tracking-widest mb-3">ДРЕСС-КОД</h2>
                 <p class="text-wedding-muted text-xs leading-relaxed px-2">
                     Главное для нас — Ваше присутствие! А если при этом на вас будет одежда в цветовой гамме нашей свадьбы — мы будем безмерно счастливы!
                 </p>
@@ -313,7 +310,7 @@
 
             <!-- Палитра Девушки -->
             <div class="mb-8">
-                <h3 class="font-hand text-2xl text-wedding-primary text-center mb-3">Девушки</h3>
+                <h3 class="font-hand text-xl text-wedding-primary text-center mb-3">Девушки</h3>
                 <div class="grid grid-cols-4 gap-2 px-4">
                     <div class="h-16 rounded-lg shadow-xs" style="background-color: #4A3B32;"></div>
                     <div class="h-16 rounded-lg shadow-xs" style="background-color: #8C7A6B;"></div>
@@ -328,7 +325,7 @@
 
             <!-- Палитра Мужчины -->
             <div>
-                <h3 class="font-hand text-2xl text-wedding-primary text-center mb-3">Мужчины</h3>
+                <h3 class="font-hand text-xl text-wedding-primary text-center mb-3">Мужчины</h3>
                 <div class="grid grid-cols-4 gap-2 px-4">
                     <div class="h-16 rounded-lg shadow-xs" style="background-color: #343A40;"></div>
                     <div class="h-16 rounded-lg shadow-xs" style="background-color: #6C757D;"></div>
@@ -340,28 +337,28 @@
 
         <!-- ================= 8. ПОЖЕЛАНИЯ ================= -->
         <section class="my-12 text-center">
-            <h2 class="font-hand text-3xl text-wedding-primary font-bold uppercase tracking-widest mb-4">ПОЖЕЛАНИЯ</h2>
+            <h2 class="font-hand text-2xl text-wedding-primary uppercase tracking-widest mb-4">ПОЖЕЛАНИЯ</h2>
             
             <div class="bg-white/60 p-5 rounded-2xl border border-stone-200/80 mb-4 text-sm text-wedding-muted leading-relaxed relative">
-                <span class="absolute -left-2 top-1/2 text-wedding-primary font-hand text-xl">←</span>
+                <span class="absolute -left-2 top-1/2 text-wedding-primary font-hand text-lg">←</span>
                 Не ломайте голову над подарками — мы будем очень рады вашему приятному денежному вкладу в наше семейное путешествие!
-                <span class="absolute -right-2 top-1/2 text-wedding-primary font-hand text-xl">→</span>
+                <span class="absolute -right-2 top-1/2 text-wedding-primary font-hand text-lg">→</span>
             </div>
 
             <div class="bg-white/60 p-5 rounded-2xl border border-stone-200/80 text-sm text-wedding-muted leading-relaxed relative">
-                <span class="absolute -left-2 top-1/2 text-wedding-primary font-hand text-xl">←</span>
+                <span class="absolute -left-2 top-1/2 text-wedding-primary font-hand text-lg">←</span>
                 Вместо цветов мы будем рады бутылочке вашего любимого вина или крепкого напитка для пополнения нашей семейной энотеки!
-                <span class="absolute -right-2 top-1/2 text-wedding-primary font-hand text-xl">→</span>
+                <span class="absolute -right-2 top-1/2 text-wedding-primary font-hand text-lg">→</span>
             </div>
         </section>
 
         <!-- ================= 9. АНКЕТА ГОСТЯ (RSVP) ================= -->
         <section id="rsvp-section" class="my-12 pt-4">
             <div class="text-center mb-6">
-                <div class="text-wedding-primary font-hand text-2xl">♡</div>
-                <h2 class="font-hand text-4xl text-wedding-primary font-bold uppercase tracking-widest mb-1">АНКЕТА</h2>
+                <div class="text-wedding-primary font-hand text-xl">♡</div>
+                <h2 class="font-hand text-3xl text-wedding-primary uppercase tracking-widest mb-1">АНКЕТА</h2>
                 <p class="text-xs text-wedding-muted">Пожалуйста, подтвердите своё присутствие на мероприятии до:</p>
-                <div class="font-hand text-2xl text-wedding-primary font-bold mt-1">19.07.2027</div>
+                <div class="font-hand text-xl text-wedding-primary mt-1">19.07.2027</div>
             </div>
 
             <form id="rsvp-form" class="space-y-6 bg-white p-6 rounded-2xl shadow-sm border border-stone-100">
@@ -442,18 +439,18 @@
 
         <!-- ================= 10. ФИНАЛЬНЫЙ БЛОК ================= -->
         <footer class="my-16 text-center">
-            <div class="font-hand text-3xl text-wedding-primary mb-1">♡</div>
-            <p class="font-hand text-2xl text-wedding-dark mb-6">До скорой встречи!<br>С любовью</p>
+            <div class="font-hand text-2xl text-wedding-primary mb-1">♡</div>
+            <p class="font-hand text-xl text-wedding-dark mb-6">До скорой встречи!<br>С любовью</p>
             
             <div class="relative flex justify-center my-4">
                 <div class="polaroid w-64 rotate-[3deg] rounded-sm">
                     <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=600" alt="Разделите с нами этот момент" class="w-full h-56 object-cover rounded-xs">
-                    <div class="font-hand text-xl text-center mt-3 text-wedding-primary font-bold">Разделите с нами этот момент</div>
+                    <div class="font-hand text-lg text-center mt-3 text-wedding-primary">Разделите с нами этот момент</div>
                 </div>
             </div>
 
-            <div class="mt-8 font-hand text-2xl text-wedding-primary font-bold">
-                Лариса <span class="text-xl">+</span> Александр
+            <div class="mt-8 font-hand text-xl text-wedding-primary">
+                Лариса <span class="text-base">+</span> Александр
             </div>
         </footer>
 
@@ -483,11 +480,8 @@
 
     <!-- JavaScript для плавного скролла и формы -->
     <script>
-        // Обработка отправки формы
         document.getElementById('rsvp-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            // В реальном проекте здесь будет отправка данных в Telegram-бота или Google Таблицу
             document.getElementById('success-modal').classList.remove('hidden');
         });
 
@@ -495,7 +489,6 @@
             document.getElementById('success-modal').classList.add('hidden');
         }
 
-        // Плавный скролл при клике на кнопки
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
