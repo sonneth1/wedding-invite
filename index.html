@@ -2,504 +2,1390 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Приглашение на свадьбу — Лариса & Александр</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Pangolin & Comfortaa -->
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Pangolin&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        wedding: {
-                            bg: '#FAF6F0',
-                            card: '#FFFFFF',
-                            primary: '#E54B4B',
-                            accent: '#D93838',
-                            dark: '#2D2926',
-                            muted: '#7C746E',
-                            gold: '#C5A059'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Comfortaa', 'sans-serif'],
-                        hand: ['Pangolin', 'cursive']
-                    }
-                }
-            }
-        }
-    </script>
-    
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500&family=Neucha&family=Shantell+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
     <style>
-        /* Имитация текстуры качественной бумаги */
+        :root {
+            --red: #DF2B2B;
+            --orange: #E55A2B;
+            --blue: #6F8FAF;
+            --dark: #2B2927;
+            --gray: #6E6A66;
+            --bg-paper: #F5F2EB;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: #FAF6F0;
-            background-image: radial-gradient(#e2d9cd 0.75px, transparent 0.75px), radial-gradient(#e2d9cd 0.75px, #FAF6F0 0.75px);
-            background-size: 30px 30px;
-            background-position: 0 0, 15px 15px;
-            color: #2D2926;
-            overflow-x: hidden;
+            background-color: var(--bg-paper);
+            /* Многослойная имитация акварельной/крафтовой светлой бумаги */
+            background-image: 
+                radial-gradient(rgba(0, 0, 0, 0.025) 1px, transparent 0),
+                radial-gradient(rgba(255, 255, 255, 0.6) 1px, transparent 0),
+                linear-gradient(135deg, rgba(235, 229, 218, 0.4) 0%, rgba(248, 246, 241, 0.4) 50%, rgba(232, 226, 215, 0.4) 100%);
+            background-size: 24px 24px, 32px 32px, 100% 100%;
+            background-position: 0 0, 12px 12px, 0 0;
+            color: var(--dark);
             font-family: 'Comfortaa', sans-serif;
+            font-weight: 300;
+            overflow-x: hidden;
+            padding-bottom: 65px;
         }
 
-        /* Стиль поляроидных карточек */
+        /* Основной мобильный контейнер */
+        .page-wrapper {
+            max-width: 430px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            box-shadow: 0 0 40px rgba(0,0,0,0.04);
+        }
+
+        /* Рукописные заголовки и акценты */
+        .font-hand {
+            font-family: 'Shantell Sans', 'Neucha', cursive;
+            font-weight: 400;
+        }
+
+        .title-red {
+            font-family: 'Shantell Sans', cursive;
+            color: var(--red);
+            font-size: 28px;
+            line-height: 1.25;
+            text-align: center;
+            letter-spacing: 0.02em;
+            font-weight: 400;
+        }
+
+        .title-dark {
+            font-family: 'Shantell Sans', cursive;
+            color: var(--dark);
+            font-size: 25px;
+            line-height: 1.25;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        .body-text {
+            color: var(--gray);
+            font-size: 13.5px;
+            line-height: 1.55;
+            text-align: center;
+            padding: 0 26px;
+        }
+
+        /* Анимация плавного появления при скролле */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Стиль карточек Polaroid */
         .polaroid {
-            background: white;
-            padding: 12px 12px 38px 12px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-        .polaroid:hover {
-            transform: scale(1.02) rotate(0deg) !important;
-            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.15);
-            z-index: 20;
+            background: #FFFFFF;
+            padding: 8px 8px 34px 8px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+            display: inline-block;
+            position: relative;
         }
 
-        /* Декоративные флажки на нитке */
-        .bunting-flag {
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%);
+        .polaroid img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
-        /* Кастомные радио и чекбоксы */
-        .custom-checkbox input:checked + label {
-            border-color: #E54B4B;
-            background-color: #FEF2F2;
-            color: #E54B4B;
+        /* Маленькие рисованные сердечки */
+        .mini-heart {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            pointer-events: none;
+            z-index: 5;
         }
-        
-        .custom-radio input:checked + label {
-            border-color: #E54B4B;
-            background-color: #FEF2F2;
-            color: #E54B4B;
+
+        /* ================= 1. ОБЛОЖКА ================= */
+        .hero-section {
+            padding-top: 10px;
+            position: relative;
+            text-align: center;
+        }
+
+        .garland-svg {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Контейнер для 4 детских фото */
+        .kids-gallery {
+            position: relative;
+            height: 250px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .kid-polaroid {
+            position: absolute;
+            width: 122px;
+            height: 162px;
+            padding: 6px 6px 28px 6px;
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+        }
+
+        .kid-1 {
+            left: -22px;
+            top: 42px;
+            transform: rotate(-8deg);
+            z-index: 1;
+        }
+
+        .kid-2 {
+            left: 78px;
+            top: 26px;
+            transform: rotate(9deg);
+            z-index: 2;
+        }
+
+        .kid-3 {
+            left: 192px;
+            top: 38px;
+            transform: rotate(-4deg);
+            z-index: 3;
+        }
+
+        .kid-4 {
+            right: -28px;
+            top: 22px;
+            transform: rotate(7deg);
+            z-index: 2;
+        }
+
+        .label-alexander {
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-25%);
+            color: var(--blue);
+            font-size: 19px;
+            z-index: 6;
+        }
+
+        .label-larisa {
+            position: absolute;
+            bottom: 4px;
+            left: 105px;
+            color: var(--orange);
+            font-size: 19px;
+            z-index: 6;
+        }
+
+        .hero-names {
+            margin-top: 24px;
+            font-size: 27px;
+            color: var(--red);
+            letter-spacing: 0.03em;
+        }
+
+        .equals-heart {
+            margin: 6px auto 28px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* ================= 2. УЗНАЛИ ЭТИХ МАЛЫШЕЙ ================= */
+        .couple-polaroid-wrap {
+            position: relative;
+            margin: 28px auto 36px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .couple-polaroid {
+            width: 225px;
+            height: 275px;
+            padding: 9px 9px 48px 9px;
+            transform: rotate(5deg);
+        }
+
+        .label-etomy {
+            position: absolute;
+            left: 14px;
+            top: 52%;
+            transform: rotate(-14deg);
+            color: var(--gray);
+            font-size: 15px;
+        }
+
+        /* ================= 3. КАЛЕНДАРЬ ================= */
+        .calendar-header {
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+            gap: 28px;
+            margin: 26px 0 18px;
+        }
+
+        .cal-month, .cal-year {
+            color: var(--blue);
+            font-size: 22px;
+            letter-spacing: 0.04em;
+        }
+
+        .cal-day-big {
+            color: var(--orange);
+            font-size: 46px;
+            line-height: 1;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            max-width: 320px;
+            margin: 0 auto;
+            text-align: center;
+            row-gap: 12px;
+        }
+
+        .calendar-weekdays {
+            margin-bottom: 10px;
+            color: var(--gray);
+            font-size: 13px;
+        }
+
+        .calendar-days {
+            color: var(--dark);
+            font-size: 15px;
+        }
+
+        .cal-cell {
+            position: relative;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .save-date-note {
+            position: relative;
+            text-align: right;
+            padding-right: 42px;
+            margin-top: 8px;
+            font-size: 14px;
+            color: var(--dark);
+        }
+
+        .save-date-note span {
+            display: inline-block;
+            transform: rotate(-8deg);
+        }
+
+        /* ================= 4. МЕСТО ================= */
+        .venue-polaroid {
+            width: 245px;
+            height: 280px;
+            padding: 10px 10px 48px 10px;
+            margin: 18px auto 12px;
+        }
+
+        .how-to-get-wrap {
+            position: relative;
+            padding-top: 16px;
+            margin-bottom: 45px;
+            text-align: center;
+        }
+
+        .how-to-get-note {
+            position: absolute;
+            left: 24px;
+            top: -12px;
+            transform: rotate(-10deg);
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        .btn-outline {
+            display: inline-block;
+            border: 1px solid var(--red);
+            color: var(--red);
+            background: transparent;
+            padding: 8px 20px;
+            font-family: 'Shantell Sans', cursive;
+            font-size: 15px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.25s, color 0.25s;
+        }
+
+        .btn-outline:hover {
+            background: var(--red);
+            color: #fff;
+        }
+
+        /* ================= 5. ТАЙМИНГ ================= */
+        .timing-section {
+            position: relative;
+            margin: 40px 0 50px;
+            text-align: center;
+        }
+
+        .timing-note {
+            position: absolute;
+            right: 22px;
+            top: 24px;
+            transform: rotate(14deg);
+            font-size: 13px;
+            color: var(--dark);
+            line-height: 1.15;
+        }
+
+        .timeline-item {
+            margin: 26px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .timeline-icon {
+            height: 48px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timeline-text {
+            font-family: 'Shantell Sans', cursive;
+            font-size: 16px;
+            color: var(--dark);
+            letter-spacing: 0.02em;
+        }
+
+        .timeline-dot {
+            display: inline-block;
+            margin: 0 8px;
+            font-size: 14px;
+        }
+
+        /* ================= 6. ДРЕСС-КОД ================= */
+        .dresscode-subtitle {
+            color: var(--red);
+            font-size: 22px;
+            text-align: center;
+            margin: 26px 0 16px;
+        }
+
+        /* Коллаж шелковых текстур для девушек */
+        .girls-collage {
+            position: relative;
+            width: 330px;
+            height: 430px;
+            margin: 0 auto 32px;
+        }
+
+        .swatch-card {
+            position: absolute;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .swatch-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Имитация шелкового перелива поверх цвета/фото */
+        .silk-effect {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+        .silk-effect::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(125deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 28%, rgba(0,0,0,0.18) 48%, rgba(255,255,255,0.28) 68%, rgba(0,0,0,0.12) 100%);
+            mix-blend-mode: soft-light;
+        }
+
+        /* Коллаж костюмов для мужчин */
+        .men-collage {
+            position: relative;
+            width: 340px;
+            height: 450px;
+            margin: 0 auto 40px;
+        }
+
+        .suit-card {
+            position: absolute;
+            overflow: hidden;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+            background: #e9e5de;
+        }
+
+        .suit-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+        }
+
+        /* ================= 7. ПОЖЕЛАНИЯ (СЛАЙДЕР) ================= */
+        .wishes-section {
+            position: relative;
+            margin: 45px 0 55px;
+            text-align: center;
+        }
+
+        .wishes-slider-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 18px 0;
+            min-height: 115px;
+        }
+
+        .slider-arrow {
+            background: none;
+            border: none;
+            color: var(--red);
+            cursor: pointer;
+            padding: 8px;
+            flex-shrink: 0;
+            transition: transform 0.2s;
+        }
+
+        .slider-arrow:active {
+            transform: scale(0.88);
+        }
+
+        .wishes-slides-Viewport {
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .wishes-track {
+            display: flex;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .wish-slide {
+            min-width: 100%;
+            padding: 0 10px;
+            color: var(--gray);
+            font-size: 13.5px;
+            line-height: 1.55;
+        }
+
+        /* ================= 8. АНКЕТА ГОСТЯ ================= */
+        .rsvp-section {
+            position: relative;
+            margin: 40px 0 35px;
+            text-align: center;
+            padding: 0 28px;
+        }
+
+        .rsvp-deadline {
+            color: var(--red);
+            font-size: 24px;
+            margin: 12px 0 22px;
+            letter-spacing: 0.04em;
+        }
+
+        .important-note {
+            position: absolute;
+            right: 36px;
+            top: 115px;
+            transform: rotate(15deg);
+            font-size: 14px;
+            color: var(--dark);
+        }
+
+        /* Свернутая/Развернутая форма */
+        .rsvp-form-container {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.6s ease, opacity 0.4s ease, margin 0.4s ease;
+            text-align: left;
+        }
+
+        .rsvp-form-container.open {
+            max-height: 750px;
+            opacity: 1;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            color: #D96B6B;
+            font-size: 14px;
+            margin-bottom: 12px;
+            font-weight: 400;
+        }
+
+        .form-input-line {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--dark);
+            padding: 8px 2px;
+            font-family: 'Comfortaa', sans-serif;
+            font-size: 14px;
+            color: var(--dark);
+            outline: none;
+        }
+
+        .form-input-line::placeholder {
+            color: #B5B0A8;
+        }
+
+        /* Кастомные радиокнопки и чекбоксы как на видео */
+        .choice-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 11px;
+            cursor: pointer;
+            font-size: 13.5px;
+            color: var(--gray);
+            user-select: none;
+        }
+
+        .choice-row input {
+            display: none;
+        }
+
+        .radio-mark {
+            width: 16px;
+            height: 16px;
+            border: 1.3px solid var(--red);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .choice-row input:checked + .radio-mark::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--red);
+            border-radius: 50%;
+        }
+
+        .check-mark {
+            width: 16px;
+            height: 16px;
+            border: 1.3px solid var(--red);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .choice-row input:checked + .check-mark::after {
+            content: '✓';
+            color: var(--red);
+            font-size: 12px;
+            line-height: 1;
+        }
+
+        .btn-submit-full {
+            width: 100%;
+            border: 1px solid var(--red);
+            background: transparent;
+            color: var(--red);
+            padding: 10px;
+            font-family: 'Shantell Sans', cursive;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 6px;
+            transition: all 0.25s;
+        }
+
+        .btn-submit-full:hover {
+            background: var(--red);
+            color: #fff;
+        }
+
+        /* ================= 9. ФУТЕР ================= */
+        .footer-section {
+            text-align: center;
+            padding-bottom: 35px;
+        }
+
+        .footer-polaroid {
+            width: 260px;
+            padding: 10px 10px 26px 10px;
+            transform: rotate(-5deg);
+            margin: 26px auto 34px;
+        }
+
+        .footer-polaroid img {
+            height: 230px;
+        }
+
+        .footer-polaroid-caption {
+            color: var(--red);
+            font-size: 16px;
+            margin-top: 14px;
+            line-height: 1.3;
+        }
+
+        .footer-names {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 12px;
+            color: var(--red);
+            font-size: 28px;
+        }
+
+        /* ================= 10. НИЖНЯЯ ФИКСИРОВАННАЯ КНОПКА ================= */
+        .fixed-bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--red);
+            color: #FFFFFF;
+            text-align: center;
+            padding: 15px 16px;
+            font-family: 'Shantell Sans', cursive;
+            font-size: 16px;
+            letter-spacing: 0.03em;
+            text-decoration: none;
+            z-index: 100;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+        }
+
+        /* Модальное окно после отправки */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+            padding: 20px;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal-box {
+            background: var(--bg-paper);
+            border: 1px solid var(--red);
+            padding: 28px 22px;
+            max-width: 310px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
         }
     </style>
 </head>
-<body class="font-sans antialiased selection:bg-red-100 selection:text-wedding-primary pb-24">
+<body>
 
-    <!-- Главный контейнер для узкой мобильной верстки по референсу -->
-    <div class="max-w-md mx-auto min-h-screen relative px-4 pt-6">
+    <div class="page-wrapper">
 
-        <!-- ================= 1. ШАПКА / ОБЛОЖКА ================= -->
-        <header class="text-center pt-4 relative">
-            <!-- Гирлянда флажков "У НАС СВАДЬБА" -->
-            <div class="flex justify-center items-center gap-1 mb-8 flex-wrap">
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform -rotate-3 font-hand">У</span>
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform rotate-2 font-hand">Н</span>
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform -rotate-2 font-hand">А</span>
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform rotate-3 mr-2 font-hand">С</span>
-                
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform -rotate-2 font-hand">С</span>
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform rotate-1 font-hand">В</span>
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform -rotate-3 font-hand">А</span>
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform rotate-2 font-hand">Д</span>
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform -rotate-1 font-hand">Ь</span>
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform rotate-3 font-hand">Б</span>
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform -rotate-2 font-hand">А</span>
+        <!-- ================= 1. ШАПКА С ГИРЛЯНДОЙ И ДЕТСКИМИ ФОТО ================= -->
+        <header class="hero-section">
+            <!-- Двухъярусная гирлянда "У НАС СВАДЬБА" -->
+            <svg class="garland-svg" viewBox="0 0 400 135" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Верхняя нить: У НАС -->
+                <path d="M -10 72 Q 115 35 245 2" stroke="#5A5550" stroke-width="1"/>
+                <!-- Флажок У -->
+                <g transform="translate(22, 49) rotate(-21)">
+                    <rect x="0" y="0" width="26" height="33" fill="#F8F6F1" stroke="#5A5550" stroke-width="1"/>
+                    <text x="13" y="23" text-anchor="middle" fill="#9B6B9E" font-family="Shantell Sans, cursive" font-size="19">У</text>
+                </g>
+                <!-- Флажок Н -->
+                <g transform="translate(55, 36) rotate(-19)">
+                    <rect x="0" y="0" width="26" height="33" fill="#F8F6F1" stroke="#5A5550" stroke-width="1"/>
+                    <text x="13" y="23" text-anchor="middle" fill="#5B89A6" font-family="Shantell Sans, cursive" font-size="19">Н</text>
+                </g>
+                <!-- Флажок А -->
+                <g transform="translate(88, 25) rotate(-16)">
+                    <rect x="0" y="0" width="26" height="33" fill="#F8F6F1" stroke="#5A5550" stroke-width="1"/>
+                    <text x="13" y="23" text-anchor="middle" fill="#E07A4B" font-family="Shantell Sans, cursive" font-size="19">А</text>
+                </g>
+                <!-- Флажок С -->
+                <g transform="translate(122, 16) rotate(-14)">
+                    <rect x="0" y="0" width="26" height="33" fill="#F8F6F1" stroke="#5A5550" stroke-width="1"/>
+                    <text x="13" y="23" text-anchor="middle" fill="#6B9E78" font-family="Shantell Sans, cursive" font-size="19">С</text>
+                </g>
+
+                <!-- Нижняя нить: СВАДЬБА -->
+                <path d="M 110 10 Q 250 68 410 74" stroke="#5A5550" stroke-width="1"/>
+                <!-- Флажок С -->
+                <g transform="translate(166, 29) rotate(17)">
+                    <rect x="0" y="0" width="25" height="32" fill="#F8F6F1" stroke="#5A5550" stroke-width="1"/>
+                    <text x="12.5" y="22" text-anchor="middle" fill="#D94B4B" font-family="Shantell Sans, cursive" font-size="18">С</text>
+                </g>
+                <!-- Флажок В -->
+                <g transform="translate(197, 39) rotate(15)">
+                    <rect x="0" y="0" width="25" height="32" fill="#F8F6F1" stroke="#5A5550" stroke-width="1"/>
+                    <text x="12.5" y="22" text-anchor="middle" fill="#5B89A6" font-family="Shantell Sans, cursive" font-size="18">В</text>
+                </g>
+                <!-- Флажок А -->
+                <g transform="translate(228, 48) rotate(13)">
+                    <rect x="0" y="0" width="25" height="32" fill="#F8F6F1" stroke="#5A5550" stroke-width="1"/>
+                    <text x="12.5" y="22" text-anchor="middle" fill="#6B9E78" font-family="Shantell Sans, cursive" font-size="18">А</text>
+                </g>
+                <!-- Флажок Д -->
+                <g transform="translate(260, 56) rotate(11)">
+                    <rect x="0" y="0" width="25" height="32" fill="#F8F6F1" stroke="#5A5550" stroke-width="1"/>
+                    <text x="12.5" y="22" text-anchor="middle" fill="#7C6B9E" font-family="Shantell Sans, cursive" font-size="18">Д</text>
+                </g>
+                <!-- Флажок Ь -->
+                <g transform="translate(292, 62) rotate(8)">
+                    <rect x="0" y="0" width="25" height="32" fill="#F8F6F1" stroke="#5A5550" stroke-width="1"/>
+                    <text x="12.5" y="22" text-anchor="middle" fill="#D94B4B" font-family="Shantell Sans, cursive" font-size="18">Ь</text>
+                </g>
+                <!-- Флажок Б -->
+                <g transform="translate(324, 67) rotate(5)">
+                    <rect x="0" y="0" width="25" height="32" fill="#F8F6F1" stroke="#5A5550" stroke-width="1"/>
+                    <text x="12.5" y="22" text-anchor="middle" fill="#E07A4B" font-family="Shantell Sans, cursive" font-size="18">Б</text>
+                </g>
+                <!-- Флажок А -->
+                <g transform="translate(356, 69) rotate(2)">
+                    <rect x="0" y="0" width="25" height="32" fill="#F8F6F1" stroke="#5A5550" stroke-width="1"/>
+                    <text x="12.5" y="22" text-anchor="middle" fill="#9B6B9E" font-family="Shantell Sans, cursive" font-size="18">А</text>
+                </g>
+            </svg>
+
+            <!-- Галерея из 4 детских Polaroid-снимков -->
+            <div class="kids-gallery">
+                <!-- Подпись Александр + синяя стрелка -->
+                <div class="label-alexander font-hand">
+                    Александр
+                    <svg width="28" height="32" viewBox="0 0 28 32" fill="none" style="position:absolute; right:-22px; top:14px;">
+                        <path d="M4 2 C18 6, 20 18, 12 28 M12 28 L10 21 M12 28 L18 25" stroke="#6F8FAF" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+
+                <!-- Декоративные сердечки -->
+                <svg class="mini-heart" style="left:8px; top:18px;" viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z" stroke="#DF2B2B" stroke-width="1.5"/></svg>
+                <svg class="mini-heart" style="left:68px; top:2px;" viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z" stroke="#DF2B2B" stroke-width="1.5"/></svg>
+                <svg class="mini-heart" style="right:42px; top:4px;" viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z" stroke="#DF2B2B" stroke-width="1.5"/></svg>
+
+                <!-- ФОТО 1 (Детское слева) -->
+                <div class="kid-polaroid kid-1">
+                    <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&q=80&w=400" alt="Детское фото 1">
+                </div>
+
+                <!-- ФОТО 2 (Лариса в детстве) -->
+                <div class="kid-polaroid kid-2">
+                    <img src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&q=80&w=400" alt="Лариса в детстве">
+                </div>
+
+                <!-- ФОТО 3 (Александр в детстве) -->
+                <div class="kid-polaroid kid-3">
+                    <img src="https://images.unsplash.com/photo-1543332164-6e82f355badc?auto=format&fit=crop&q=80&w=400" alt="Александр в детстве">
+                </div>
+
+                <!-- ФОТО 4 (Детское справа) -->
+                <div class="kid-polaroid kid-4">
+                    <img src="https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?auto=format&fit=crop&q=80&w=400" alt="Детское фото 4">
+                </div>
+
+                <!-- Подпись Лариса + оранжевая стрелка -->
+                <div class="label-larisa font-hand">
+                    <svg width="26" height="28" viewBox="0 0 26 28" fill="none" style="position:absolute; left:-18px; top:-22px;">
+                        <path d="M18 25 C6 20, 4 10, 10 3 M10 3 L5 7 M10 3 L13 9" stroke="#E55A2B" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Лариса
+                </div>
+
+                <svg class="mini-heart" style="left:82px; bottom:10px;" viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z" stroke="#DF2B2B" stroke-width="1.5"/></svg>
+                <svg class="mini-heart" style="right:140px; bottom:12px;" viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z" stroke="#DF2B2B" stroke-width="1.5"/></svg>
             </div>
 
-            <!-- Галерея Polaroid с детскими фото -->
-            <div class="relative w-full flex justify-center items-center my-6 min-h-[220px]">
-                <!-- Фото Александра (Слева) -->
-                <div class="polaroid w-44 absolute left-2 top-0 rotate-[-6deg] z-10 rounded-sm">
-                    <img src="https://images.unsplash.com/photo-1543332164-6e82f355badc?auto=format&fit=crop&q=80&w=400" alt="Александр в детстве" class="w-full h-40 object-cover rounded-xs filter contrast-[1.05]">
-                    <div class="font-hand text-xl text-center mt-2 text-wedding-dark">Александр</div>
-                </div>
-
-                <!-- Стрелочка и подпись рукописная -->
-                <div class="absolute top-[-25px] left-[15%] z-20 text-wedding-primary font-hand text-lg">
-                    <span>Александр</span>
-                    <svg class="w-8 h-8 inline-block transform rotate-45 -mt-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </div>
-
-                <!-- Фото Ларисы (Справа) -->
-                <div class="polaroid w-44 absolute right-2 top-6 rotate-[7deg] z-0 rounded-sm">
-                    <img src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&q=80&w=400" alt="Лариса в детстве" class="w-full h-40 object-cover rounded-xs filter contrast-[1.05]">
-                    <div class="font-hand text-xl text-center mt-2 text-wedding-dark">Лариса</div>
-                </div>
-
-                <!-- Стрелочка и подпись к Ларисе -->
-                <div class="absolute bottom-[-20px] right-[20%] z-20 text-wedding-primary font-hand text-lg">
-                    <svg class="w-8 h-8 inline-block transform rotate-[130deg] -mt-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    <span>Лариса</span>
-                </div>
-            </div>
-
-            <!-- Имена пары -->
-            <div class="mt-16 mb-6">
-                <h1 class="font-hand text-3xl text-wedding-primary tracking-wide">
-                    ЛАРИСА <span class="text-2xl mx-1">+</span> АЛЕКСАНДР
-                </h1>
-                <div class="text-wedding-primary text-2xl font-hand mt-1">♡</div>
+            <!-- Имена и большое сердце -->
+            <h1 class="hero-names font-hand">ЛАРИСА &nbsp;+&nbsp; АЛЕКСАНДР</h1>
+            <div class="equals-heart">
+                <span class="font-hand" style="color:var(--red); font-size:18px; line-height:1;">=</span>
+                <svg width="48" height="52" viewBox="0 0 48 52" fill="none" style="margin-top:4px;">
+                    <path d="M24 46 C24 46, 6 31, 6 16 C6 9, 11 5, 16 5 C20 5, 23 9, 24 13 C25 9, 28 5, 32 5 C37 5, 42 9, 42 16 C42 31, 24 46, 24 46 Z" stroke="#DF2B2B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M24 43 C24 43, 9 29, 9 16 C9 11, 13 8, 16 8 C20 8, 23 12, 24 16 C25 12, 28 8, 31 8 C35 8, 39 11, 39 16 C39 29, 24 43, 24 43 Z" stroke="#DF2B2B" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
             </div>
         </header>
 
         <!-- ================= 2. УЗНАЛИ ЭТИХ МАЛЫШЕЙ? ================= -->
-        <section class="my-10 text-center">
-            <h2 class="font-hand text-2xl tracking-tight text-wedding-primary mb-4">Узнали этих малышей?</h2>
-            <p class="text-wedding-muted text-sm leading-relaxed px-4 mb-6">
-                Время пролетело незаметно. И вот наступил момент, когда наши детские мечты стали реальностью. Разделите с нами это главное событие лета — подарите нам своё внимание и поддержку!
+        <section class="reveal" style="margin-top: 10px;">
+            <h2 class="title-dark" style="margin-bottom: 16px;">Узнали этих малышей?</h2>
+            <p class="body-text">
+                Время пролетело незаметно. И вот наступил момент, когда наши детские мечты стали реальностью. Разделите с нами это главное событие лета - подарите нам свое внимание и поддержку!
             </p>
 
-            <!-- Совместное фото пара -->
-            <div class="relative flex justify-center my-6">
-                <div class="polaroid w-64 rotate-[-2deg] rounded-sm">
-                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=600" alt="Лариса и Александр" class="w-full h-64 object-cover rounded-xs">
-                    <div class="font-hand text-lg text-center mt-3 text-wedding-muted">Это мы ♡</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ================= 3. ОБРАЩЕНИЕ ================= -->
-        <section class="my-10 text-center px-2">
-            <div class="inline-block text-wedding-primary text-lg font-hand mb-1">♡ ♡ ♡</div>
-            <h2 class="font-hand text-2xl text-wedding-primary uppercase tracking-wider mb-3">
-                ДОРОГИЕ НАШИ<br>ДРУЗЬЯ И РОДНЫЕ!
-            </h2>
-            <p class="text-wedding-muted text-sm leading-relaxed">
-                Это официальное приглашение на нашу свадьбу! А получили вы его потому, что мы очень хотим видеть вас в этот день рядом с нами!
-            </p>
-        </section>
-
-        <!-- ================= 4. КАЛЕНДАРЬ ================= -->
-        <section class="my-12 text-center bg-white/50 backdrop-blur-xs p-6 rounded-2xl border border-stone-200/60 shadow-xs">
-            <div class="flex justify-between items-center text-wedding-primary font-semibold tracking-widest uppercase mb-4 px-4 text-sm">
-                <span>АВГУСТ</span>
-                <span class="text-3xl font-hand text-wedding-primary">09</span>
-                <span>2027</span>
-            </div>
-
-            <!-- Дни недели -->
-            <div class="grid grid-cols-7 gap-1 text-xs text-wedding-muted font-medium mb-3">
-                <span>ПН</span><span>ВТ</span><span>СР</span><span>ЧТ</span><span>ПТ</span><span>СБ</span><span>ВС</span>
-            </div>
-
-            <!-- Сетка дней -->
-            <div class="grid grid-cols-7 gap-1 text-sm text-wedding-dark font-medium">
-                <span class="p-2 text-stone-300">26</span>
-                <span class="p-2 text-stone-300">27</span>
-                <span class="p-2 text-stone-300">28</span>
-                <span class="p-2 text-stone-300">29</span>
-                <span class="p-2 text-stone-300">30</span>
-                <span class="p-2 text-stone-300">31</span>
-                <span class="p-2">1</span>
-                
-                <span class="p-2">2</span>
-                <span class="p-2">3</span>
-                <span class="p-2">4</span>
-                <span class="p-2">5</span>
-                <span class="p-2">6</span>
-                <span class="p-2">7</span>
-                <span class="p-2">8</span>
-                
-                <!-- Засердеченная/Обведенная дата -->
-                <div class="relative flex items-center justify-center p-2 font-bold text-wedding-primary">
-                    <span class="relative z-10">9</span>
-                    <svg class="absolute w-8 h-8 text-wedding-primary" viewBox="0 0 36 36" fill="none" stroke="currentColor">
-                        <path d="M18 33.25C18 33.25 3.75 22.5 3.75 12C3.75 6.75 8.25 2.25 13.5 2.25C16.5 2.25 18 3.75 18 3.75C18 3.75 19.5 2.25 22.5 2.25C27.75 2.25 32.25 6.75 32.25 12C32.25 22.5 18 33.25 18 33.25Z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            <div class="couple-polaroid-wrap">
+                <div class="label-etomy font-hand">
+                    Это мы
+                    <svg width="32" height="24" viewBox="0 0 32 24" fill="none" style="display:block; margin-left:18px; margin-top:2px;">
+                        <path d="M2 4 C14 2, 24 8, 28 18 M28 18 L22 15 M28 18 L29 11" stroke="#2B2927" stroke-width="1.2" stroke-linecap="round"/>
                     </svg>
                 </div>
 
-                <span class="p-2">10</span>
-                <span class="p-2">11</span>
-                <span class="p-2">12</span>
-                <span class="p-2">13</span>
-                <span class="p-2">14</span>
-                <span class="p-2">15</span>
+                <svg class="mini-heart" style="left:82px; top:12px;" viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z" stroke="#DF2B2B" stroke-width="1.5"/></svg>
+                <svg class="mini-heart" style="right:28px; top:22px;" viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z" stroke="#DF2B2B" stroke-width="1.5"/></svg>
 
-                <span class="p-2">16</span><span class="p-2">17</span><span class="p-2">18</span><span class="p-2">19</span><span class="p-2">20</span><span class="p-2">21</span><span class="p-2">22</span>
-                <span class="p-2">23</span><span class="p-2">24</span><span class="p-2">25</span><span class="p-2">26</span><span class="p-2">27</span><span class="p-2">28</span><span class="p-2">29</span>
-                <span class="p-2">30</span><span class="p-2">31</span>
-            </div>
-
-            <div class="mt-4 text-right pr-2">
-                <span class="font-hand text-lg text-wedding-primary">Сохраните дату </span>
-                <span class="text-wedding-primary">↴</span>
-            </div>
-        </section>
-
-        <!-- ================= 5. МЕСТО ПРОВЕДЕНИЯ ================= -->
-        <section class="my-12 text-center">
-            <h2 class="font-hand text-2xl text-wedding-primary uppercase tracking-widest mb-1">МЕСТО</h2>
-            <p class="text-xs text-wedding-muted uppercase tracking-wider mb-4">г. Воронеж, ул. Изыскателей, Bazza36</p>
-
-            <div class="relative flex justify-center my-4">
-                <div class="polaroid w-full max-w-xs rotate-[1deg] rounded-sm">
-                    <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=600" alt="Площадка Bazza36" class="w-full h-52 object-cover rounded-xs">
-                </div>
-            </div>
-
-            <a href="https://yandex.ru/maps" target="_blank" class="inline-block mt-2 border border-wedding-primary text-wedding-primary px-5 py-2 rounded-full text-xs font-semibold hover:bg-wedding-primary hover:text-white transition-colors">
-                Как добраться ➔
-            </a>
-        </section>
-
-        <!-- ================= 6. ТАЙМИНГ ДНЯ ================= -->
-        <section class="my-12">
-            <div class="text-center mb-8">
-                <h2 class="font-hand text-2xl text-wedding-primary uppercase tracking-widest">ТАЙМИНГ</h2>
-                <div class="font-hand text-base text-wedding-muted">Самого важного дня ⤵</div>
-            </div>
-
-            <div class="space-y-6 px-4 relative before:absolute before:left-[2.2rem] before:top-2 before:bottom-2 before:w-[1px] before:bg-stone-300">
-                <!-- Событие 1 -->
-                <div class="flex items-center gap-4 relative z-10">
-                    <div class="w-10 h-10 rounded-full bg-white border border-stone-200 flex items-center justify-center text-wedding-primary shadow-xs shrink-0">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                    </div>
-                    <div>
-                        <span class="text-sm font-semibold text-wedding-dark">12:00</span>
-                        <span class="text-wedding-muted mx-1">•</span>
-                        <span class="text-sm text-wedding-muted font-medium">Сбор гостей</span>
-                    </div>
-                </div>
-
-                <!-- Событие 2 -->
-                <div class="flex items-center gap-4 relative z-10">
-                    <div class="w-10 h-10 rounded-full bg-white border border-stone-200 flex items-center justify-center text-wedding-primary shadow-xs shrink-0">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-                    </div>
-                    <div>
-                        <span class="text-sm font-semibold text-wedding-dark">12:30</span>
-                        <span class="text-wedding-muted mx-1">•</span>
-                        <span class="text-sm text-wedding-muted font-medium">Церемония регистрации</span>
-                    </div>
-                </div>
-
-                <!-- Событие 3 -->
-                <div class="flex items-center gap-4 relative z-10">
-                    <div class="w-10 h-10 rounded-full bg-white border border-stone-200 flex items-center justify-center text-wedding-primary shadow-xs shrink-0">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.7 2.7 0 01-3 0 2.7 2.7 0 00-3 0 2.7 2.7 0 01-3 0 2.7 2.7 0 00-3 0 2.7 2.7 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M3 21h18M3 10h18v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7z"></path></svg>
-                    </div>
-                    <div>
-                        <span class="text-sm font-semibold text-wedding-dark">13:30</span>
-                        <span class="text-wedding-muted mx-1">•</span>
-                        <span class="text-sm text-wedding-muted font-medium">Банкет</span>
-                    </div>
-                </div>
-
-                <!-- Событие 4 -->
-                <div class="flex items-center gap-4 relative z-10">
-                    <div class="w-10 h-10 rounded-full bg-white border border-stone-200 flex items-center justify-center text-wedding-primary shadow-xs shrink-0">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                    </div>
-                    <div>
-                        <span class="text-sm font-semibold text-wedding-dark">23:00</span>
-                        <span class="text-wedding-muted mx-1">•</span>
-                        <span class="text-sm text-wedding-muted font-medium">Завершение вечера</span>
-                    </div>
+                <!-- ФОТО ПАРЫ ("Это мы") -->
+                <div class="polaroid couple-polaroid">
+                    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&q=80&w=600" alt="Лариса и Александр">
                 </div>
             </div>
         </section>
 
-        <!-- ================= 7. ДРЕСС-КОД ================= -->
-        <section class="my-12">
-            <div class="text-center mb-6">
-                <h2 class="font-hand text-2xl text-wedding-primary uppercase tracking-widest mb-3">ДРЕСС-КОД</h2>
-                <p class="text-wedding-muted text-xs leading-relaxed px-2">
-                    Главное для нас — Ваше присутствие! А если при этом на вас будет одежда в цветовой гамме нашей свадьбы — мы будем безмерно счастливы!
-                </p>
-                <p class="text-stone-400 text-[11px] italic mt-2">
-                    (Если вы не нашли подходящий цвет из палитры, будем рады видеть Вас в любом постельном оттенке на Ваш вкус)
-                </p>
+        <!-- ================= 3. ДОРОГИЕ НАШИ ДРУЗЬЯ И КАЛЕНДАРЬ ================= -->
+        <section class="reveal" style="position:relative; margin-top: 20px;">
+            <svg class="mini-heart" style="left:36px; top:-10px;" viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z" stroke="#DF2B2B" stroke-width="1.5"/></svg>
+            <svg class="mini-heart" style="right:26px; top:38px;" viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z" stroke="#DF2B2B" stroke-width="1.5"/></svg>
+
+            <h2 class="title-red" style="margin-bottom: 16px;">
+                ДОРОГИЕ НАШИ<br>ДРУЗЬЯ И РОДНЫЕ!
+            </h2>
+            <p class="body-text">
+                Это официальное приглашение на нашу свадьбу! А получили вы его потому, что мы очень хотим видеть вас в этот день рядом с нами!
+            </p>
+
+            <!-- Шапка даты: АВГУСТ 09 2027 -->
+            <div class="calendar-header font-hand">
+                <span class="cal-month">АВГУСТ</span>
+                <span class="cal-day-big">09</span>
+                <span class="cal-year">2027</span>
             </div>
 
-            <!-- Палитра Девушки -->
-            <div class="mb-8">
-                <h3 class="font-hand text-xl text-wedding-primary text-center mb-3">Девушки</h3>
-                <div class="grid grid-cols-4 gap-2 px-4">
-                    <div class="h-16 rounded-lg shadow-xs" style="background-color: #4A3B32;"></div>
-                    <div class="h-16 rounded-lg shadow-xs" style="background-color: #8C7A6B;"></div>
-                    <div class="h-16 rounded-lg shadow-xs" style="background-color: #CDBBA7;"></div>
-                    <div class="h-16 rounded-lg shadow-xs" style="background-color: #E8D8C8;"></div>
-                    <div class="h-16 rounded-lg shadow-xs" style="background-color: #B58A8A;"></div>
-                    <div class="h-16 rounded-lg shadow-xs" style="background-color: #D6ADA4;"></div>
-                    <div class="h-16 rounded-lg shadow-xs" style="background-color: #F7E3DC;"></div>
-                    <div class="h-16 rounded-lg shadow-xs" style="background-color: #FCEFE9;"></div>
+            <!-- Сетка календаря -->
+            <div class="calendar-grid calendar-weekdays">
+                <div>пн</div><div>вт</div><div>ср</div><div>чт</div><div>пт</div><div>сб</div><div>вс</div>
+            </div>
+
+            <div class="calendar-grid calendar-days">
+                <div class="cal-cell"></div>
+                <div class="cal-cell"></div>
+                <div class="cal-cell"></div>
+                <div class="cal-cell"></div>
+                <div class="cal-cell"></div>
+                <div class="cal-cell"></div>
+                <div class="cal-cell">1</div>
+
+                <div class="cal-cell">2</div>
+                <div class="cal-cell">3</div>
+                <div class="cal-cell">4</div>
+                <div class="cal-cell">5</div>
+                <div class="cal-cell">6</div>
+                <div class="cal-cell">7</div>
+                <div class="cal-cell">8</div>
+
+                <div class="cal-cell">
+                    9
+                    <!-- Рисованный красный кружок вокруг 9 -->
+                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" style="position:absolute; inset:-3px; margin:auto;">
+                        <path d="M18 4 C27 3, 33 10, 32 19 C31 28, 24 33, 15 32 C7 31, 3 24, 5 15 C6 8, 13 4, 21 5" stroke="#DF2B2B" stroke-width="1.6" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="cal-cell">10</div>
+                <div class="cal-cell">11</div>
+                <div class="cal-cell">12</div>
+                <div class="cal-cell">13</div>
+                <div class="cal-cell">14</div>
+                <div class="cal-cell">15</div>
+
+                <div class="cal-cell">16</div>
+                <div class="cal-cell">17</div>
+                <div class="cal-cell">18</div>
+                <div class="cal-cell">19</div>
+                <div class="cal-cell">20</div>
+                <div class="cal-cell">21</div>
+                <div class="cal-cell">22</div>
+
+                <div class="cal-cell">23</div>
+                <div class="cal-cell">24</div>
+                <div class="cal-cell">25</div>
+                <div class="cal-cell">26</div>
+                <div class="cal-cell">27</div>
+                <div class="cal-cell">28</div>
+                <div class="cal-cell">29</div>
+
+                <div class="cal-cell">30</div>
+                <div class="cal-cell">31</div>
+            </div>
+
+            <div class="save-date-note font-hand">
+                <svg width="24" height="28" viewBox="0 0 24 28" fill="none" style="display:block; margin-left:auto; margin-right:32px; margin-bottom:-2px;">
+                    <path d="M14 26 C18 18, 16 10, 8 4 M8 4 L7 10 M8 4 L14 5" stroke="#2B2927" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
+                <span>Сохраните дату</span>
+            </div>
+        </section>
+
+        <!-- ================= 4. МЕСТО ================= -->
+        <section class="reveal" style="position:relative; margin-top: 38px; text-align:center;">
+            <svg class="mini-heart" style="left:65px; top:6px;" viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z" stroke="#DF2B2B" stroke-width="1.5"/></svg>
+            <svg class="mini-heart" style="right:72px; top:14px;" viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z" stroke="#DF2B2B" stroke-width="1.5"/></svg>
+
+            <h2 class="title-red" style="margin-bottom: 12px;">МЕСТО</h2>
+            <p class="body-text" style="margin-bottom: 8px;">
+                г.Воронеж, ул.<br>Изыскателей, Баzza36
+            </p>
+
+            <!-- ФОТО ПЛОЩАДКИ -->
+            <div class="polaroid venue-polaroid">
+                <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=600" alt="Площадка Баzza36">
+            </div>
+
+            <div class="how-to-get-wrap">
+                <div class="how-to-get-note font-hand">
+                    Как добраться
+                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" style="display:block; margin-left:32px; margin-top:2px;">
+                        <path d="M4 2 C4 14, 12 20, 22 20 M22 20 L17 16 M22 20 L17 24" stroke="#2B2927" stroke-width="1.2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <!-- Ссылка на карту -->
+                <a href="https://yandex.ru/maps" target="_blank" rel="noopener" class="btn-outline">Как добраться</a>
+            </div>
+        </section>
+
+        <!-- ================= 5. ТАЙМИНГ ================= -->
+        <section class="timing-section reveal">
+            <h2 class="title-red" style="margin-bottom: 18px;">ТАЙМИНГ</h2>
+
+            <div class="timing-note font-hand">
+                Самого важного<br>дня
+                <svg width="24" height="28" viewBox="0 0 24 28" fill="none" style="display:block; margin: 2px auto 0;">
+                    <path d="M16 2 C20 12, 14 20, 6 24 M6 24 L12 24 M6 24 L8 18" stroke="#2B2927" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
+            </div>
+
+            <svg class="mini-heart" style="left:22px; top:95px;" viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z" stroke="#DF2B2B" stroke-width="1.5"/></svg>
+
+            <!-- 12:00 Сбор гостей (Кольца) -->
+            <div class="timeline-item">
+                <div class="timeline-icon">
+                    <svg width="58" height="32" viewBox="0 0 58 32" fill="none">
+                        <ellipse cx="21" cy="18" rx="14" ry="8" transform="rotate(-12 21 18)" stroke="#DF2B2B" stroke-width="1.4"/>
+                        <ellipse cx="36" cy="16" rx="14" ry="8" transform="rotate(8 36 16)" stroke="#DF2B2B" stroke-width="1.4"/>
+                    </svg>
+                </div>
+                <div class="timeline-text">12:00 <span class="timeline-dot">•</span> Сбор гостей</div>
+            </div>
+
+            <!-- 12:30 Церемония регистрации (Силуэты жениха и невесты) -->
+            <div class="timeline-item">
+                <div class="timeline-icon">
+                    <svg width="46" height="52" viewBox="0 0 46 52" fill="none">
+                        <path d="M18 12 C16 20, 10 34, 8 46 L26 46 C24 34, 20 20, 18 12 Z" stroke="#7A9EC2" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M27 10 L35 10 L36 46 L26 46 L27 10 Z" stroke="#7A9EC2" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M31 26 L31 46" stroke="#7A9EC2" stroke-width="1.1"/>
+                    </svg>
+                </div>
+                <div class="timeline-text">12:30 <span class="timeline-dot">•</span> Церемония регистрации</div>
+            </div>
+
+            <svg class="mini-heart" style="right:32px; top:210px;" viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z" stroke="#DF2B2B" stroke-width="1.5"/></svg>
+
+            <!-- 13:30 Банкет (Торт) -->
+            <div class="timeline-item">
+                <div class="timeline-icon">
+                    <svg width="52" height="46" viewBox="0 0 52 46" fill="none">
+                        <path d="M10 26 L34 14 L42 24 L42 36 L10 38 Z" stroke="#E56B38" stroke-width="1.4" stroke-linejoin="round"/>
+                        <path d="M10 31 L42 29" stroke="#E56B38" stroke-width="1.2"/>
+                        <circle cx="28" cy="12" r="4" stroke="#E56B38" stroke-width="1.3"/>
+                    </svg>
+                </div>
+                <div class="timeline-text">13:30 <span class="timeline-dot">•</span> Банкет</div>
+            </div>
+
+            <!-- 23:00 Завершение вечера (Бокалы) -->
+            <div class="timeline-item">
+                <div class="timeline-icon">
+                    <svg width="48" height="50" viewBox="0 0 48 50" fill="none">
+                        <path d="M14 8 L22 8 L20 26 C19 30, 15 30, 14 26 L14 8 Z" stroke="#D9B44A" stroke-width="1.4"/>
+                        <path d="M17 29 L13 44 M10 44 L17 44" stroke="#D9B44A" stroke-width="1.4" stroke-linecap="round"/>
+                        <path d="M26 8 L34 8 L34 26 C33 30, 29 30, 28 26 L26 8 Z" stroke="#D9B44A" stroke-width="1.4"/>
+                        <path d="M31 29 L35 44 M31 44 L38 44" stroke="#D9B44A" stroke-width="1.4" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="timeline-text">23:00 <span class="timeline-dot">•</span> Завершение вечера</div>
+            </div>
+        </section>
+
+        <!-- ================= 6. ДРЕСС-КОД ================= -->
+        <section class="reveal">
+            <h2 class="title-red" style="margin-bottom: 16px;">ДРЕСС-КОД</h2>
+            <p class="body-text">
+                Главное для нас - Ваше присутствие. А если при этом на вас еще будет одежда в цветовой гамме нашей свадьбы - мы будем безмерно счастливы!<br>
+                (Если Вы не нашли подходящий цвет из палитры, будем рады видеть Вас в любом пастельном оттенке на Ваш вкус)
+            </p>
+
+            <!-- Девушки: коллаж шелковых текстур внахлест -->
+            <h3 class="dresscode-subtitle font-hand">Девушки</h3>
+            <div class="girls-collage">
+                <!-- Верхний левый блок (3 оттенка: серебро, темный шоколад, бронза) -->
+                <div class="swatch-card" style="left:6px; top:0; width:136px; height:180px; z-index:1;">
+                    <div class="silk-effect" style="height:33.3%; background: linear-gradient(135deg, #c7c4bf, #8e8a84, #d8d6d2);"></div>
+                    <div class="silk-effect" style="height:33.3%; background: linear-gradient(135deg, #2b1d16, #140d09, #3d2a20);"></div>
+                    <div class="silk-effect" style="height:33.4%; background: linear-gradient(135deg, #75533e, #4a3222, #9c755d);"></div>
+                </div>
+
+                <!-- Верхний правый блок (3 оттенка: капучино, персиковый беж, шампань) -->
+                <div class="swatch-card" style="right:6px; top:12px; width:136px; height:168px; z-index:1;">
+                    <div class="silk-effect" style="height:33.3%; background: linear-gradient(135deg, #8d735b, #5e4936, #b0957d);"></div>
+                    <div class="silk-effect" style="height:33.3%; background: linear-gradient(135deg, #eacab8, #cfa48e, #f5dfd3);"></div>
+                    <div class="silk-effect" style="height:33.4%; background: linear-gradient(135deg, #d8ccb8, #b5a48b, #ece4d5);"></div>
+                </div>
+
+                <!-- Центральный блок внахлест (пыльная роза / лиловый шелк) -->
+                <div class="swatch-card" style="left:94px; top:105px; width:152px; height:175px; z-index:3;">
+                    <div class="silk-effect" style="height:33.3%; background: linear-gradient(135deg, #c9a9b0, #9e7b82, #dfc7cc);"></div>
+                    <div class="silk-effect" style="height:33.3%; background: linear-gradient(135deg, #a66c75, #733f48, #c79199);"></div>
+                    <div class="silk-effect" style="height:33.4%; background: linear-gradient(135deg, #cdb1b8, #a3848b, #e3cfd4);"></div>
+                </div>
+
+                <!-- Нижний левый блок (нежно-лимонный шелк) -->
+                <div class="swatch-card" style="left:52px; top:245px; width:132px; height:175px; z-index:4;">
+                    <div class="silk-effect" style="height:100%; background: linear-gradient(135deg, #f3e7b3, #dfd090, #faf2cf);"></div>
+                </div>
+
+                <!-- Нижний правый блок (нежно-розовый шелк) -->
+                <div class="swatch-card" style="right:8px; top:255px; width:126px; height:165px; z-index:2;">
+                    <div class="silk-effect" style="height:100%; background: linear-gradient(135deg, #f7dce2, #e3bfc7, #fceef1);"></div>
                 </div>
             </div>
 
-            <!-- Палитра Мужчины -->
-            <div>
-                <h3 class="font-hand text-xl text-wedding-primary text-center mb-3">Мужчины</h3>
-                <div class="grid grid-cols-4 gap-2 px-4">
-                    <div class="h-16 rounded-lg shadow-xs" style="background-color: #343A40;"></div>
-                    <div class="h-16 rounded-lg shadow-xs" style="background-color: #6C757D;"></div>
-                    <div class="h-16 rounded-lg shadow-xs" style="background-color: #A8B2A6;"></div>
-                    <div class="h-16 rounded-lg shadow-xs" style="background-color: #D1D5DB;"></div>
+            <!-- Мужчины: коллаж из 5 костюмов внахлест -->
+            <h3 class="dresscode-subtitle font-hand">Мужчины</h3>
+            <div class="men-collage">
+                <!-- 1. Оливковый костюм (верх лево) -->
+                <div class="suit-card reveal" style="left:8px; top:12px; width:135px; height:180px; z-index:2;">
+                    <img src="https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&q=80&w=400" alt="Мужской образ 1">
+                </div>
+                <!-- 2. Бордово-розовый костюм (верх право) -->
+                <div class="suit-card reveal" style="right:8px; top:0; width:135px; height:175px; z-index:2;">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400" alt="Мужской образ 2">
+                </div>
+                <!-- 3. Светло-розовый костюм (центр внахлест) -->
+                <div class="suit-card reveal" style="left:98px; top:118px; width:142px; height:188px; z-index:3;">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400" alt="Мужской образ 3">
+                </div>
+                <!-- 4. Голубой костюм (низ лево) -->
+                <div class="suit-card reveal" style="left:6px; top:255px; width:132px; height:185px; z-index:4;">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400" alt="Мужской образ 4">
+                </div>
+                <!-- 5. Бежевый костюм (низ право) -->
+                <div class="suit-card reveal" style="right:10px; top:265px; width:138px; height:180px; z-index:4;">
+                    <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=400" alt="Мужской образ 5">
                 </div>
             </div>
         </section>
 
-        <!-- ================= 8. ПОЖЕЛАНИЯ ================= -->
-        <section class="my-12 text-center">
-            <h2 class="font-hand text-2xl text-wedding-primary uppercase tracking-widest mb-4">ПОЖЕЛАНИЯ</h2>
-            
-            <div class="bg-white/60 p-5 rounded-2xl border border-stone-200/80 mb-4 text-sm text-wedding-muted leading-relaxed relative">
-                <span class="absolute -left-2 top-1/2 text-wedding-primary font-hand text-lg">←</span>
-                Не ломайте голову над подарками — мы будем очень рады вашему приятному денежному вкладу в наше семейное путешествие!
-                <span class="absolute -right-2 top-1/2 text-wedding-primary font-hand text-lg">→</span>
+        <!-- ================= 7. ПОЖЕЛАНИЯ (ИНТЕРАКТИВНЫЙ СЛАЙДЕР) ================= -->
+        <section class="wishes-section reveal">
+            <svg class="mini-heart" style="left:24px; top:-22px;" viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z" stroke="#DF2B2B" stroke-width="1.5"/></svg>
+            <svg class="mini-heart" style="left:145px; top:-16px;" viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z" stroke="#DF2B2B" stroke-width="1.5"/></svg>
+            <svg class="mini-heart" style="right:18px; top:-24px;" viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z" stroke="#DF2B2B" stroke-width="1.5"/></svg>
+
+            <h2 class="title-red" style="margin-bottom: 4px;">ПОЖЕЛАНИЯ</h2>
+
+            <!-- Маленькая черная рисованная стрелочка слева -->
+            <div style="text-align:left; padding-left:44px; margin-bottom:-6px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M4 2 C4 12, 10 18, 20 18 M20 18 L15 14 M20 18 L15 22" stroke="#2B2927" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
             </div>
 
-            <div class="bg-white/60 p-5 rounded-2xl border border-stone-200/80 text-sm text-wedding-muted leading-relaxed relative">
-                <span class="absolute -left-2 top-1/2 text-wedding-primary font-hand text-lg">←</span>
-                Вместо цветов мы будем рады бутылочке вашего любимого вина или крепкого напитка для пополнения нашей семейной энотеки!
-                <span class="absolute -right-2 top-1/2 text-wedding-primary font-hand text-lg">→</span>
-            </div>
-        </section>
-
-        <!-- ================= 9. АНКЕТА ГОСТЯ (RSVP) ================= -->
-        <section id="rsvp-section" class="my-12 pt-4">
-            <div class="text-center mb-6">
-                <div class="text-wedding-primary font-hand text-xl">♡</div>
-                <h2 class="font-hand text-3xl text-wedding-primary uppercase tracking-widest mb-1">АНКЕТА</h2>
-                <p class="text-xs text-wedding-muted">Пожалуйста, подтвердите своё присутствие на мероприятии до:</p>
-                <div class="font-hand text-xl text-wedding-primary mt-1">19.07.2027</div>
-            </div>
-
-            <form id="rsvp-form" class="space-y-6 bg-white p-6 rounded-2xl shadow-sm border border-stone-100">
-                <!-- Ваше имя -->
-                <div>
-                    <label class="block text-xs uppercase font-semibold text-wedding-dark mb-2">Ваше Имя и Фамилия</label>
-                    <input type="text" required placeholder="Иван и Мария Ивановы" class="w-full px-4 py-3 text-sm bg-stone-50 border border-stone-200 rounded-xl focus:outline-hidden focus:border-wedding-primary transition-colors">
-                </div>
-
-                <!-- Планируете ли присутствовать -->
-                <div>
-                    <label class="block text-xs uppercase font-semibold text-wedding-dark mb-2">Планируете ли Вы присутствовать?</label>
-                    <div class="space-y-2">
-                        <div class="custom-radio">
-                            <input type="radio" id="att-yes" name="attendance" value="Да, с удовольствием" checked class="hidden">
-                            <label for="att-yes" class="block w-full p-3 text-sm text-center border border-stone-200 rounded-xl cursor-pointer transition-all font-medium">
-                                Да, с удовольствием
-                            </label>
-                        </div>
-                        <div class="custom-radio">
-                            <input type="radio" id="att-no" name="attendance" value="К сожалению, не смогу" class="hidden">
-                            <label for="att-no" class="block w-full p-3 text-sm text-center border border-stone-200 rounded-xl cursor-pointer transition-all font-medium">
-                                К сожалению, не смогу
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Предпочтения по напиткам -->
-                <div>
-                    <label class="block text-xs uppercase font-semibold text-wedding-dark mb-2">Ваши предпочтения по напиткам</label>
-                    <div class="grid grid-cols-2 gap-2">
-                        <div class="custom-checkbox">
-                            <input type="checkbox" id="drink-1" name="drinks" value="Шампанское" class="hidden">
-                            <label for="drink-1" class="block p-2.5 text-xs text-center border border-stone-200 rounded-xl cursor-pointer transition-all">
-                                Шампанское
-                            </label>
-                        </div>
-                        <div class="custom-checkbox">
-                            <input type="checkbox" id="drink-2" name="drinks" value="Белое вино" class="hidden">
-                            <label for="drink-2" class="block p-2.5 text-xs text-center border border-stone-200 rounded-xl cursor-pointer transition-all">
-                                Белое вино
-                            </label>
-                        </div>
-                        <div class="custom-checkbox">
-                            <input type="checkbox" id="drink-3" name="drinks" value="Красное вино" class="hidden">
-                            <label for="drink-3" class="block p-2.5 text-xs text-center border border-stone-200 rounded-xl cursor-pointer transition-all">
-                                Красное вино
-                            </label>
-                        </div>
-                        <div class="custom-checkbox">
-                            <input type="checkbox" id="drink-4" name="drinks" value="Виски" class="hidden">
-                            <label for="drink-4" class="block p-2.5 text-xs text-center border border-stone-200 rounded-xl cursor-pointer transition-all">
-                                Виски
-                            </label>
-                        </div>
-                        <div class="custom-checkbox">
-                            <input type="checkbox" id="drink-5" name="drinks" value="Самогон" class="hidden">
-                            <label for="drink-5" class="block p-2.5 text-xs text-center border border-stone-200 rounded-xl cursor-pointer transition-all">
-                                Самогон
-                            </label>
-                        </div>
-                        <div class="custom-checkbox">
-                            <input type="checkbox" id="drink-6" name="drinks" value="Не пью алкоголь" class="hidden">
-                            <label for="drink-6" class="block p-2.5 text-xs text-center border border-stone-200 rounded-xl cursor-pointer transition-all">
-                                Не пью алкоголь
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Кнопка Отправки -->
-                <button type="submit" class="w-full bg-wedding-primary hover:bg-wedding-accent text-white font-bold py-3.5 px-4 rounded-xl shadow-md transition-all uppercase tracking-wider text-xs">
-                    Подтвердить
+            <div class="wishes-slider-wrap">
+                <button type="button" class="slider-arrow" id="prev-wish" aria-label="Предыдущее пожелание">
+                    <svg width="22" height="16" viewBox="0 0 22 16" fill="none">
+                        <path d="M20 8 H3 M3 8 L8 3 M3 8 L8 13" stroke="#DF2B2B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                 </button>
-            </form>
+
+                <div class="wishes-slides-Viewport" id="wishes-viewport">
+                    <div class="wishes-track" id="wishes-track">
+                        <!-- Слайд 1 -->
+                        <div class="wish-slide">
+                            Не ломайте голову над подарками - мы будем очень рады вашему приятному денежному вкладу на наше семейное путешествие!
+                        </div>
+                        <!-- Слайд 2 -->
+                        <div class="wish-slide">
+                            Не дарите нам цветы - мы не успеем насладиться их красотой, а вот бутылочке алкогольного напитка для нашего домашнего бара будем очень рады!
+                        </div>
+                        <!-- Слайд 3 -->
+                        <div class="wish-slide">
+                            Мы очень хотим, чтобы вы по-настоящему отдохнули от суеты. По возможности, оставьте детей дома, чтобы вы смогли полностью посвятить время себе и празднику!
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" class="slider-arrow" id="next-wish" aria-label="Следующее пожелание">
+                    <svg width="22" height="16" viewBox="0 0 22 16" fill="none">
+                        <path d="M2 8 H19 M19 8 L14 3 M19 8 L14 13" stroke="#DF2B2B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
         </section>
 
-        <!-- ================= 10. ФИНАЛЬНЫЙ БЛОК ================= -->
-        <footer class="my-16 text-center">
-            <div class="font-hand text-2xl text-wedding-primary mb-1">♡</div>
-            <p class="font-hand text-xl text-wedding-dark mb-6">До скорой встречи!<br>С любовью</p>
-            
-            <div class="relative flex justify-center my-4">
-                <div class="polaroid w-64 rotate-[3deg] rounded-sm">
-                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=600" alt="Разделите с нами этот момент" class="w-full h-56 object-cover rounded-xs">
-                    <div class="font-hand text-lg text-center mt-3 text-wedding-primary">Разделите с нами этот момент</div>
+        <!-- ================= 8. АНКЕТА ГОСТЯ ================= -->
+        <section id="rsvp-section" class="rsvp-section reveal">
+            <svg class="mini-heart" style="left:98px; top:12px;" viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z" stroke="#DF2B2B" stroke-width="1.5"/></svg>
+            <svg class="mini-heart" style="right:88px; top:-14px;" viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z" stroke="#DF2B2B" stroke-width="1.5"/></svg>
+
+            <h2 class="title-red" style="margin-bottom: 14px;">АНКЕТА</h2>
+            <p class="body-text" style="padding:0;">
+                Пожалуйста, подтвердите свое<br>присутствие на мероприятии до:
+            </p>
+            <div class="rsvp-deadline font-hand">19. 07. 2027</div>
+
+            <!-- Подпись "Это важно" со стрелкой (видна когда анкета свернута) -->
+            <div id="important-hint" class="important-note font-hand">
+                Это важно
+                <svg width="24" height="28" viewBox="0 0 24 28" fill="none" style="display:block; margin: 2px auto 0;">
+                    <path d="M16 2 C20 12, 14 20, 6 24 M6 24 L12 24 M6 24 L8 18" stroke="#2B2927" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
+            </div>
+
+            <!-- Кнопка открытия анкеты -->
+            <div id="rsvp-open-btn-wrap" style="margin: 10px 0 24px;">
+                <button type="button" id="open-rsvp-btn" class="btn-outline">подтвердить</button>
+            </div>
+
+            <!-- Раскрывающаяся форма анкеты (как на 00:39 в видео) -->
+            <div id="rsvp-form-container" class="rsvp-form-container">
+                <form id="rsvp-form">
+                    <div class="form-group">
+                        <label class="form-label">Ваше Имя и Фамилия</label>
+                        <input type="text" required class="form-input-line" placeholder="Ваше имя и фамилия">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Планируете ли Вы присутствовать?</label>
+                        <label class="choice-row">
+                            <input type="radio" name="attendance" value="Да, с удовольствием" required>
+                            <span class="radio-mark"></span>
+                            <span>Да, с удовольствием</span>
+                        </label>
+                        <label class="choice-row">
+                            <input type="radio" name="attendance" value="Не смогу">
+                            <span class="radio-mark"></span>
+                            <span>Не смогу</span>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Ваши предпочтения</label>
+                        <label class="choice-row">
+                            <input type="checkbox" name="drinks" value="Шампанское">
+                            <span class="check-mark"></span>
+                            <span>Шампанское</span>
+                        </label>
+                        <label class="choice-row">
+                            <input type="checkbox" name="drinks" value="Белое вино">
+                            <span class="check-mark"></span>
+                            <span>Белое вино</span>
+                        </label>
+                        <label class="choice-row">
+                            <input type="checkbox" name="drinks" value="Красное вино">
+                            <span class="check-mark"></span>
+                            <span>Красное вино</span>
+                        </label>
+                        <label class="choice-row">
+                            <input type="checkbox" name="drinks" value="Виски">
+                            <span class="check-mark"></span>
+                            <span>Виски</span>
+                        </label>
+                        <label class="choice-row">
+                            <input type="checkbox" name="drinks" value="Самогон">
+                            <span class="check-mark"></span>
+                            <span>Самогон</span>
+                        </label>
+                        <label class="choice-row">
+                            <input type="checkbox" name="drinks" value="Не пью алкоголь">
+                            <span class="check-mark"></span>
+                            <span>Не пью алкоголь</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-submit-full">подтвердить</button>
+                </form>
+            </div>
+
+            <!-- Большое рисованное сердце под анкетой -->
+            <div style="margin: 18px auto 10px;">
+                <svg width="48" height="52" viewBox="0 0 48 52" fill="none">
+                    <path d="M24 46 C24 46, 6 31, 6 16 C6 9, 11 5, 16 5 C20 5, 23 9, 24 13 C25 9, 28 5, 32 5 C37 5, 42 9, 42 16 C42 31, 24 46, 24 46 Z" stroke="#DF2B2B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M24 43 C24 43, 9 29, 9 16 C9 11, 13 8, 16 8 C20 8, 23 12, 24 16 C25 12, 28 8, 31 8 C35 8, 39 11, 39 16 C39 29, 24 43, 24 43 Z" stroke="#DF2B2B" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
+            </div>
+        </section>
+
+        <!-- ================= 9. ФИНАЛЬНЫЙ БЛОК ================= -->
+        <footer class="footer-section reveal">
+            <p class="body-text" style="font-size:15px;">
+                До скорой встречи!<br>С любовью
+            </p>
+
+            <!-- ФИНАЛЬНОЕ ФОТО POLAROID -->
+            <div class="polaroid footer-polaroid">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=600" alt="Разделите с нами этот момент">
+                <div class="footer-polaroid-caption font-hand">
+                    Разделите с нами этот<br>момент
                 </div>
             </div>
 
-            <div class="mt-8 font-hand text-xl text-wedding-primary">
-                Лариса <span class="text-base">+</span> Александр
+            <div class="footer-names font-hand">
+                <span>Лариса</span>
+                <span>+</span>
+                <span>Александр</span>
             </div>
         </footer>
 
     </div>
 
-    <!-- ================= 11. ФИКСИРОВАННАЯ КНОПКА ================= -->
-    <div class="fixed bottom-0 left-0 right-0 p-3 bg-white/80 backdrop-blur-md border-t border-stone-200 z-50 flex justify-center">
-        <a href="#rsvp-section" class="w-full max-w-md bg-wedding-primary hover:bg-wedding-accent text-white font-bold text-center py-3.5 px-6 rounded-xl shadow-lg transition-transform active:scale-[0.98] uppercase tracking-wider text-xs flex items-center justify-center gap-2">
-            <span>ПОДТВЕРДИТЬ ПРИСУТСТВИЕ</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </a>
-    </div>
+    <!-- ================= 10. ФИКСИРОВАННАЯ НИЖНЯЯ ПЛАШКА ================= -->
+    <button type="button" id="bottom-rsvp-bar" class="fixed-bottom-bar">
+        подтвердить присутствие
+    </button>
 
-    <!-- Уведомление об успешной отправке (Message Modal) -->
-    <div id="success-modal" class="fixed inset-0 bg-black/40 backdrop-blur-xs z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-2xl p-6 text-center max-w-xs w-full shadow-2xl transform transition-all">
-            <div class="w-12 h-12 bg-red-100 text-wedding-primary rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">
-                ♡
-            </div>
-            <h3 class="text-lg font-bold text-wedding-dark mb-2">Спасибо!</h3>
-            <p class="text-xs text-wedding-muted mb-5 leading-relaxed">Ваш ответ успешно записан. Мы с нетерпением ждём встречи с вами!</p>
-            <button onclick="closeModal()" class="w-full bg-wedding-primary text-white py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider">
-                Закрыть
-            </button>
+    <!-- Модальное окно успешного ответа -->
+    <div id="success-modal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="font-hand" style="color:var(--red); font-size:26px; margin-bottom:8px;">Спасибо! ♡</div>
+            <p class="body-text" style="padding:0; margin-bottom:20px;">
+                Ваш ответ успешно сохранен. До встречи на свадьбе!
+            </p>
+            <button type="button" onclick="closeModal()" class="btn-outline" style="width:100%;">Закрыть</button>
         </div>
     </div>
 
-    <!-- JavaScript для плавного скролла и формы -->
     <script>
+        // 1. Анимация плавного появления блоков при скролле
+        const revealElements = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.12 });
+
+        revealElements.forEach(el => observer.observe(el));
+
+        // 2. Слайдер в блоке "Пожелания" (стрелки + свайп пальцем)
+        const track = document.getElementById('wishes-track');
+        const slides = document.querySelectorAll('.wish-slide');
+        const prevBtn = document.getElementById('prev-wish');
+        const nextBtn = document.getElementById('next-wish');
+        let currentSlide = 0;
+
+        function updateSlider() {
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateSlider();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateSlider();
+        });
+
+        // Поддержка свайпов на телефоне
+        let startX = 0;
+        const viewport = document.getElementById('wishes-viewport');
+        viewport.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        }, { passive: true });
+
+        viewport.addEventListener('touchend', (e) => {
+            const diff = startX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 40) {
+                if (diff > 0) {
+                    currentSlide = (currentSlide + 1) % slides.length;
+                } else {
+                    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                }
+                updateSlider();
+            }
+        });
+
+        // 3. Раскрытие анкеты (RSVP) по клику на кнопку или нижнюю плашку
+        const openRsvpBtn = document.getElementById('open-rsvp-btn');
+        const bottomBarBtn = document.getElementById('bottom-rsvp-bar');
+        const formContainer = document.getElementById('rsvp-form-container');
+        const openBtnWrap = document.getElementById('rsvp-open-btn-wrap');
+        const importantHint = document.getElementById('important-hint');
+        const rsvpSection = document.getElementById('rsvp-section');
+
+        function expandRsvpForm() {
+            formContainer.classList.add('open');
+            openBtnWrap.style.display = 'none';
+            importantHint.style.display = 'none';
+        }
+
+        openRsvpBtn.addEventListener('click', expandRsvpForm);
+
+        bottomBarBtn.addEventListener('click', () => {
+            expandRsvpForm();
+            rsvpSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        // 4. Отправка формы
         document.getElementById('rsvp-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            document.getElementById('success-modal').classList.remove('hidden');
+            document.getElementById('success-modal').classList.add('show');
         });
 
         function closeModal() {
-            document.getElementById('success-modal').classList.add('hidden');
+            document.getElementById('success-modal').classList.remove('show');
         }
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
     </script>
 </body>
 </html>
