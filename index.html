@@ -83,21 +83,89 @@
 
         <!-- ================= 1. ШАПКА / ОБЛОЖКА ================= -->
         <header class="text-center pt-4 relative">
-            <!-- Гирлянда флажков "У НАС СВАДЬБА" -->
-            <div class="flex justify-center items-center gap-1 mb-8 flex-wrap">
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform -rotate-3">У</span>
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform rotate-2">Н</span>
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform -rotate-2">А</span>
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform rotate-3 mr-2">С</span>
-                
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform -rotate-2">С</span>
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform rotate-1">В</span>
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform -rotate-3">А</span>
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform rotate-2">Д</span>
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform -rotate-1">Ь</span>
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform rotate-3">Б</span>
-                <span class="bunting-flag bg-wedding-primary text-white font-bold text-xs px-2.5 py-2 shadow-sm transform -rotate-2">А</span>
-            </div>
+             <!-- Гирлянда флажков "У НАС СВАДЬБА" по референсу -->
+<div class="w-full -mx-4 mb-6 select-none overflow-hidden">
+    <svg class="w-full h-auto block" viewBox="0 0 420 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <!-- Эффект неровного рисованного контура карандашом/фломастером -->
+            <filter id="sketch-border" x="-10%" y="-10%" width="120%" height="120%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.18" numOctaves="2" result="noise" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.6" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+        </defs>
+
+        <!-- Единая нитка с изломом сверху -->
+        <path d="M -5 78 L 146 16 Q 270 66 425 76" stroke="#2D2926" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" />
+
+        <!-- Слово "У НАС" (идет вверх к пику) -->
+        <!-- У (голубой) -->
+        <g transform="translate(10, 72) rotate(-22.5)">
+            <rect x="0" y="0" width="27" height="34" rx="1" fill="none" stroke="#98D6EA" stroke-width="2" filter="url(#sketch-border)" />
+            <text x="13.5" y="24" text-anchor="middle" fill="#2D2926" font-family="Shantell Sans, Pangolin, Caveat, cursive" font-size="21">У</text>
+        </g>
+
+        <!-- Н (розовый) -->
+        <g transform="translate(43, 58) rotate(-22.5)">
+            <rect x="0" y="0" width="27" height="34" rx="1" fill="none" stroke="#EC6A8C" stroke-width="2" filter="url(#sketch-border)" />
+            <text x="13.5" y="24" text-anchor="middle" fill="#2D2926" font-family="Shantell Sans, Pangolin, Caveat, cursive" font-size="21">Н</text>
+        </g>
+
+        <!-- А (салатовый) -->
+        <g transform="translate(76, 44.5) rotate(-22.5)">
+            <rect x="0" y="0" width="27" height="34" rx="1" fill="none" stroke="#A6DC7A" stroke-width="2" filter="url(#sketch-border)" />
+            <text x="13.5" y="24" text-anchor="middle" fill="#2D2926" font-family="Shantell Sans, Pangolin, Caveat, cursive" font-size="21">А</text>
+        </g>
+
+        <!-- С (оранжевый) -->
+        <g transform="translate(109, 31) rotate(-22.5)">
+            <rect x="0" y="0" width="27" height="34" rx="1" fill="none" stroke="#F09854" stroke-width="2" filter="url(#sketch-border)" />
+            <text x="13.5" y="24" text-anchor="middle" fill="#2D2926" font-family="Shantell Sans, Pangolin, Caveat, cursive" font-size="21">С</text>
+        </g>
+
+        <!-- Слово "СВАДЬБА" (плавно спускается по дуге вправо) -->
+        <!-- С (желтый) -->
+        <g transform="translate(168, 25) rotate(22)">
+            <rect x="0" y="0" width="27" height="34" rx="1" fill="none" stroke="#F4EC73" stroke-width="2" filter="url(#sketch-border)" />
+            <text x="13.5" y="24" text-anchor="middle" fill="#2D2926" font-family="Shantell Sans, Pangolin, Caveat, cursive" font-size="21">С</text>
+        </g>
+
+        <!-- В (фиолетовый) -->
+        <g transform="translate(203, 39) rotate(18)">
+            <rect x="0" y="0" width="27" height="34" rx="1" fill="none" stroke="#9D4EDD" stroke-width="2" filter="url(#sketch-border)" />
+            <text x="13.5" y="24" text-anchor="middle" fill="#2D2926" font-family="Shantell Sans, Pangolin, Caveat, cursive" font-size="21">В</text>
+        </g>
+
+        <!-- А (салатовый) -->
+        <g transform="translate(239, 50) rotate(14)">
+            <rect x="0" y="0" width="27" height="34" rx="1" fill="none" stroke="#A6DC7A" stroke-width="2" filter="url(#sketch-border)" />
+            <text x="13.5" y="24" text-anchor="middle" fill="#2D2926" font-family="Shantell Sans, Pangolin, Caveat, cursive" font-size="21">А</text>
+        </g>
+
+        <!-- Д (голубой) -->
+        <g transform="translate(275, 59) rotate(10)">
+            <rect x="0" y="0" width="27" height="34" rx="1" fill="none" stroke="#98D6EA" stroke-width="2" filter="url(#sketch-border)" />
+            <text x="13.5" y="24" text-anchor="middle" fill="#2D2926" font-family="Shantell Sans, Pangolin, Caveat, cursive" font-size="21">Д</text>
+        </g>
+
+        <!-- Ь (оранжевый) -->
+        <g transform="translate(312, 66) rotate(6)">
+            <rect x="0" y="0" width="27" height="34" rx="1" fill="none" stroke="#F09854" stroke-width="2" filter="url(#sketch-border)" />
+            <text x="13.5" y="24" text-anchor="middle" fill="#2D2926" font-family="Shantell Sans, Pangolin, Caveat, cursive" font-size="21">Ь</text>
+        </g>
+
+        <!-- Б (розовый) -->
+        <g transform="translate(349, 71) rotate(3)">
+            <rect x="0" y="0" width="27" height="34" rx="1" fill="none" stroke="#EC6A8C" stroke-width="2" filter="url(#sketch-border)" />
+            <text x="13.5" y="24" text-anchor="middle" fill="#2D2926" font-family="Shantell Sans, Pangolin, Caveat, cursive" font-size="21">Б</text>
+        </g>
+
+        <!-- А (темно-синий) -->
+        <g transform="translate(386, 74) rotate(0)">
+            <rect x="0" y="0" width="27" height="34" rx="1" fill="none" stroke="#5A67BA" stroke-width="2" filter="url(#sketch-border)" />
+            <text x="13.5" y="24" text-anchor="middle" fill="#2D2926" font-family="Shantell Sans, Pangolin, Caveat, cursive" font-size="21">А</text>
+        </g>
+    </svg>
+</div>
 
             <!-- Галерея Polaroid с детскими фото -->
             <div class="relative w-full flex justify-center items-center my-6 min-h-[220px]">
