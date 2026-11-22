@@ -435,7 +435,7 @@
                 <!-- Ваше имя -->
                 <div>
                     <label class="block text-xs uppercase font-semibold text-wedding-dark mb-2">Ваше Имя и Фамилия</label>
-                    <input type="text" required placeholder="Иван и Мария Ивановы" class="w-full px-4 py-3 text-sm bg-stone-50 border border-stone-200 rounded-xl focus:outline-hidden focus:border-wedding-primary transition-colors">
+                    <input type="text" id="guest-name" name="guest_name" required placeholder="Иван и Мария Ивановы" class="w-full px-4 py-3 text-sm bg-stone-50 border border-stone-200 rounded-xl focus:outline-hidden focus:border-wedding-primary transition-colors">
                 </div>
 
                 <!-- Планируете ли присутствовать -->
@@ -550,12 +550,56 @@
 
     <!-- JavaScript для плавного скролла и формы -->
     <script>
-        // Обработка отправки формы
-        document.getElementById('rsvp-form').addEventListener('submit', function(e) {
+        // Обработка отправки формы в Telegram
+        document.getElementById('rsvp-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // В реальном проекте здесь будет отправка данных в Telegram-бота или Google Таблицу
-            document.getElementById('success-modal').classList.remove('hidden');
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span>Отправка...</span>';
+
+            const name = document.getElementById('guest-name').value.trim();
+            const attendance = document.querySelector('input[name="attendance"]:checked')?.value || 'Не указано';
+            
+            const selectedDrinks = Array.from(document.querySelectorAll('input[name="drinks"]:checked'))
+                .map(cb => cb.value);
+            const drinksText = selectedDrinks.length > 0 ? selectedDrinks.join(', ') : 'Не выбрано';
+
+            // Формируем сообщение для Telegram
+            const message = `💍 <b>Новый ответ на приглашение!</b>\n\n` +
+                            `👤 <b>Гость:</b> ${name}\n` +
+                            `💌 <b>Присутствие:</b> ${attendance}\n` +
+                            `🥂 <b>Напитки:</b> ${drinksText}\n` +
+                            `⏰ <i>${new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' })}</i>`;
+
+            const botToken = '9054017375:AAEcFyqemgSG4yEY_rCZiGgmLx1_xJlZgi8';
+            const chatId = '1538737671';
+
+            try {
+                const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: message,
+                        parse_mode: 'HTML'
+                    })
+                });
+
+                const result = await response.json();
+                if (result.ok) {
+                    document.getElementById('rsvp-form').reset();
+                } else {
+                    console.error('Telegram API error:', result);
+                }
+            } catch (err) {
+                console.error('Network error:', err);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+                document.getElementById('success-modal').classList.remove('hidden');
+            }
         });
 
         function closeModal() {
