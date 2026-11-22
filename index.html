@@ -574,27 +574,33 @@
                             `⏰ <i>${new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' })}</i>`;
 
             const botToken = '9054017375:AAEcFyqemgSG4yEY_rCZiGgmLx1_xJlZgi8';
-            const chatId = '1538737671';
+            const chatIds = ['1538737671', '371791298'];
 
             try {
-                const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        chat_id: chatId,
-                        text: message,
-                        parse_mode: 'HTML'
-                    })
-                });
+                // Отправляем уведомление всем получателям
+                await Promise.all(chatIds.map(async (chatId) => {
+                    try {
+                        const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                chat_id: chatId,
+                                text: message,
+                                parse_mode: 'HTML'
+                            })
+                        });
+                        const result = await response.json();
+                        if (!result.ok) {
+                            console.warn(`Telegram API error for ${chatId}:`, result);
+                        }
+                    } catch (e) {
+                        console.warn(`Failed to send to ${chatId}:`, e);
+                    }
+                }));
 
-                const result = await response.json();
-                if (result.ok) {
-                    document.getElementById('rsvp-form').reset();
-                } else {
-                    console.error('Telegram API error:', result);
-                }
+                document.getElementById('rsvp-form').reset();
             } catch (err) {
-                console.error('Network error:', err);
+                console.error('Submission error:', err);
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalBtnText;
