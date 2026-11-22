@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="overflow-x-hidden bg-[#FAF6F0]">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Приглашение на свадьбу — Лариса & Александр</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&family=Shantell+Sans:wght@500;600;700&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -36,6 +36,12 @@
     </script>
     
     <style>
+        html {
+            overflow-x: hidden;
+            background-color: #FAF6F0;
+            width: 100%;
+        }
+
         /* Имитация текстуры качественной бумаги */
         body {
             background-color: #FAF6F0;
@@ -44,6 +50,11 @@
             background-position: 0 0, 15px 15px;
             color: #2D2926;
             overflow-x: hidden;
+            width: 100%;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            -webkit-text-size-adjust: 100%;
         }
 
         /* Стиль поляроидных карточек */
@@ -57,9 +68,6 @@
             transform: scale(1.02) rotate(0deg) !important;
             box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.15);
             z-index: 20;
-        }
-
-      
         }
 
         /* Кастомные радио и чекбоксы */
@@ -76,15 +84,15 @@
         }
     </style>
 </head>
-<body class="font-sans antialiased selection:bg-red-100 selection:text-wedding-primary pb-24">
+<body class="font-sans antialiased selection:bg-red-100 selection:text-wedding-primary pb-28">
 
     <!-- Главный контейнер для узкой мобильной верстки по референсу -->
-    <div class="max-w-md mx-auto min-h-screen relative px-4 pt-6">
+    <div class="max-w-md mx-auto min-h-screen relative px-4 pt-6 overflow-x-hidden">
 
         <!-- ================= 1. ШАПКА / ОБЛОЖКА ================= -->
         <header class="text-center pt-4 relative">
              <!-- Гирлянда флажков "У НАС СВАДЬБА" по референсу -->
-<div class="w-full -mx-4 mb-6 select-none overflow-hidden">
+<div class="-mx-4 w-[calc(100%+2rem)] mb-6 select-none overflow-hidden">
     <svg class="w-full h-auto block" viewBox="0 0 420 130" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
             <!-- Эффект неровного рисованного контура карандашом/фломастером -->
@@ -168,7 +176,7 @@
 </div>
 
             <!-- Галерея Polaroid с детскими фото -->
-            <div class="relative w-full flex justify-center items-center my-6 min-h-[220px]">
+            <div class="relative w-full flex justify-center items-center my-6 min-h-[250px]">
                 <!-- Фото Александра (Слева) -->
                 <div class="polaroid w-44 absolute left-2 top-0 rotate-[-6deg] z-10 rounded-sm">
                     <img src="https://images.unsplash.com/photo-1543332164-6e82f355badc?auto=format&fit=crop&q=80&w=400" alt="Александр в детстве" class="w-full h-40 object-cover rounded-xs filter contrast-[1.05]">
@@ -176,7 +184,7 @@
                 </div>
 
                 <!-- Стрелочка и подпись рукописная -->
-                <div class="absolute top-[-30px] left-[6%] z-20 text-wedding-primary font-hand text-xl">
+                <div class="absolute top-[-26px] left-[6%] z-20 text-wedding-primary font-hand text-xl">
                     <span>Александр</span>
                     <svg class="w-8 h-8 inline-block transform rotate-45 -mt-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </div>
@@ -188,14 +196,14 @@
                 </div>
 
                 <!-- Стрелочка и подпись к Ларисе -->
-                <div class="absolute bottom-[200px] right-[7%] z-20 text-wedding-primary font-hand text-xl">
+                <div class="absolute top-[-10px] right-[4%] z-20 text-wedding-primary font-hand text-xl">
                     <svg class="w-8 h-8 inline-block transform rotate-[130deg] -mt-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     <span>Лариса</span>
                 </div>
             </div>
 
             <!-- Имена пары -->
-            <div class="mt-16 mb-6">
+            <div class="mt-10 mb-6">
                 <h1 class="font-hand text-4xl text-wedding-primary font-bold tracking-wide">
                     ЛАРИСА <span class="text-3xl mx-1">+</span> АЛЕКСАНДР
                 </h1>
@@ -391,6 +399,7 @@
                     <div class="h-16 rounded-lg shadow-xs" style="background-color: #FCEFE9;"></div>
                 </div>
             </div>
+        </section>
 
         <!-- ================= 9. АНКЕТА ГОСТЯ (RSVP) ================= -->
         <section id="rsvp-section" class="my-12 pt-4">
@@ -497,7 +506,7 @@
     </div>
 
     <!-- ================= 11. ФИКСИРОВАННАЯ КНОПКА ================= -->
-    <div class="fixed bottom-0 left-0 right-0 p-3 bg-white/80 backdrop-blur-md border-t border-stone-200 z-50 flex justify-center">
+    <div class="fixed bottom-0 left-0 right-0 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] bg-white/80 backdrop-blur-md border-t border-stone-200 z-50 flex justify-center">
         <a href="#rsvp-section" class="w-full max-w-md bg-wedding-primary hover:bg-wedding-accent text-white font-bold text-center py-3.5 px-6 rounded-xl shadow-lg transition-transform active:scale-[0.98] uppercase tracking-wider text-xs flex items-center justify-center gap-2">
             <span>ПОДТВЕРДИТЬ ПРИСУТСТВИЕ</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
