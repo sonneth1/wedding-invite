@@ -9,7 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&family=Shantell+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -28,7 +28,8 @@
                     },
                     fontFamily: {
                         sans: ['Montserrat', 'sans-serif'],
-                        hand: ['Caveat', 'cursive']
+                        hand: ['"Shantell Sans"', 'Caveat', 'cursive'],
+                        flag: ['"Shantell Sans"', 'cursive']
                     }
                 }
             }
@@ -55,6 +56,13 @@
             margin: 0;
             padding: 0;
             -webkit-text-size-adjust: 100%;
+        }
+
+        /* Все шрифты красного цвета и акцентные заголовки в стиле букв внутри флажков (Shantell Sans) */
+        .text-wedding-primary,
+        .font-flag,
+        .font-hand {
+            font-family: 'Shantell Sans', 'Caveat', cursive;
         }
 
         /* Стиль поляроидных карточек */
@@ -240,7 +248,7 @@
 
         <!-- ================= 4. КАЛЕНДАРЬ ================= -->
         <section class="my-12 text-center bg-white/50 backdrop-blur-xs p-6 rounded-2xl border border-stone-200/60 shadow-xs">
-            <div class="flex justify-between items-center text-wedding-primary font-semibold tracking-widest uppercase mb-4 px-4 text-sm">
+            <div class="flex justify-between items-center text-wedding-primary font-flag font-bold tracking-widest uppercase mb-4 px-4 text-sm">
                 <span>АВГУСТ</span>
                 <span class="text-3xl font-hand font-bold text-wedding-primary">09</span>
                 <span>2027</span>
@@ -306,7 +314,7 @@
                 </div>
             </div>
 
-            <a href="https://yandex.ru/maps" target="_blank" class="inline-block mt-2 border border-wedding-primary text-wedding-primary px-5 py-2 rounded-full text-xs font-semibold hover:bg-wedding-primary hover:text-white transition-colors">
+            <a href="https://yandex.ru/maps" target="_blank" class="inline-block mt-2 border border-wedding-primary text-wedding-primary font-flag font-bold px-5 py-2 rounded-full text-xs hover:bg-wedding-primary hover:text-white transition-colors">
                 Как добраться ➔
             </a>
         </section>
@@ -480,7 +488,7 @@
                 </div>
 
                 <!-- Кнопка Отправки -->
-                <button type="submit" class="w-full bg-wedding-primary hover:bg-wedding-accent text-white font-bold py-3.5 px-4 rounded-xl shadow-md transition-all uppercase tracking-wider text-xs">
+                <button type="submit" class="w-full bg-wedding-primary hover:bg-wedding-accent text-white font-flag font-bold py-3.5 px-4 rounded-xl shadow-md transition-all uppercase tracking-wider text-xs">
                     Подтвердить
                 </button>
             </form>
@@ -507,7 +515,7 @@
 
     <!-- ================= 11. ФИКСИРОВАННАЯ КНОПКА ================= -->
     <div class="fixed bottom-0 left-0 right-0 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] bg-white/80 backdrop-blur-md border-t border-stone-200 z-50 flex justify-center">
-        <a href="#rsvp-section" class="w-full max-w-md bg-wedding-primary hover:bg-wedding-accent text-white font-bold text-center py-3.5 px-6 rounded-xl shadow-lg transition-transform active:scale-[0.98] uppercase tracking-wider text-xs flex items-center justify-center gap-2">
+        <a href="#rsvp-section" class="w-full max-w-md bg-wedding-primary hover:bg-wedding-accent text-white font-flag font-bold text-center py-3.5 px-6 rounded-xl shadow-lg transition-transform active:scale-[0.98] uppercase tracking-wider text-xs flex items-center justify-center gap-2">
             <span>ПОДТВЕРДИТЬ ПРИСУТСТВИЕ</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
         </a>
